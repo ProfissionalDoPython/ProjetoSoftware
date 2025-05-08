@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Banco de Talentos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+ :root {
+  --bg-body: antiquewhite;
+  --form-bg: #1629a7;
+  --form-text: black;
+  --btn-bg: #003366;
+  --border-color: #2e73b9;
+  --gradiente-cor1: #fce6eb;
+  --gradiente-cor2: #87b5e3;
+  --nova-cor: white;
+
+}
+
+body.dark-mode {
+  --bg-body: #1e1e1e;
+  --form-bg: #2b2b2b;
+  --form-text: #eee;
+  --btn-bg: #4682b4;
+  --gradiente-cor1: #333;
+  --gradiente-cor2: #0a0d4a;
+  --nova-cor: #0a0d4a;
+
+}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none;
+      text-decoration: none;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg-body);
+      transition: background 0.3s ease;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--btn-bg);
+      z-index: 1001;
+    }
+
+
+.sidebar {
+  position: fixed;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #001f4d;
+  transition: all .5s ease;
+  z-index: 1000; 
+}
+
+
+.sidebar .logo img{
+  width: 75%;
+  max-width: 600px;
+  user-select: none;
+}
+
+.sidebar ul a{
+  display: block;
+  height: 32px;
+  width: 100%;
+  margin-top: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  color: white;
+  padding-left: 70px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  border-bottom: 1px solid black;
+  transition: .4s;
+}
+
+.sidebar ul li:hover a {
+  color: orange;
+  padding-left: 50px;
+}
+
+.sidebar ul a i{
+  margin-right: 16px;
+}
+
+#check  {
+  display: none;
+}
+label #btn, label #cancel {
+  position: fixed;
+  cursor: pointer;
+  background: #042331;
+  border-radius: 3px;
+  z-index: 10000; 
+}
+
+label #btn{
+  left: 40px;
+  top: 25px;
+  font-size: 35px;
+  color: orange;
+  padding: 6px 12px;
+  transition: all .5s;
+}
+label #cancel {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  font-size: 20px;
+  color: orange;
+  padding: 4px 9px;
+  background: none;
+  border: none;
+  z-index: 10000;
+  transition: all .5s ease;
+}
+#check:checked ~ .sidebar{
+  left: 0;
+}
+#check:checked ~ label #btn{
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+#check:checked ~ label #cancel{
+  left: 195px;
+}
+
+.sair {
+  border-radius: 40px;
+  background-color: green;
+  margin-top: -30px;
+  font-size: 1px;
+}
+.sair:hover{
+  background-color: red;
+}
+
+
+.conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, var(--gradiente-cor1) 35%, var(--gradiente-cor2) 35%);
+  background-size: 100% 80%;
+  background-repeat: no-repeat;
+  background-position: center 110%;
+  border: 2px solid var(--border-color);
+}
+
+
+
+.topo-banner {
+  width: 100%;
+  height: 200px;
+  color: #114c8c;
+  background-color: var(--form-bg);
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+}
+
+.bg-topo {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.fundo-pincelada {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.conteudo-banner {
+  
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 40px;
+  z-index: 1;
+}
+
+.pessoa {
+  margin-left: 40px;
+  height: 200px;
+  object-fit: contain;
+  margin-right: 0;
+}
+
+
+.texto-banner {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.logo-ueg {
+  height: 200px;
+  margin-left: 90px;
+}
+
+.pesquisa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  width: 60%; 
+  max-width: 600px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.pesquisa i {
+  font-size: 18px;
+  color: #888;
+  margin-right: 10px;
+}
+
+.pesquisa input[type="search"] {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+}
+
+
+.perfil {
+  position: fixed;
+  top: 24px; 
+  right: 40px; 
+  background-color: rgba(195, 219, 243, 0.5); 
+  border: 1px solid #999;
+  border-radius: 100px;
+  text-align: center;
+  padding: 10px;
+  width: 90px;
+  z-index: 1000; 
+}
+
+.perfil .icone {
+  font-size: 30px;
+}
+
+.processos {
+  text-align: center;
+  margin-top: 40px; 
+}
+
+.processos h2 {
+  font-size: 22px;
+  color: #003366;
+  margin-bottom: 20px; 
+}
+
+.processos h2 span {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.cards {
+  
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 0; 
+}
+
+.card {
+  background-color: white;
+  width: 180px;
+  height: 230px;
+  border: 1px solid #3399ff;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .imagem {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.card button {
+  background-color: #3399ff;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+ </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+  <div class="menu-lateral">
+
+    <input type="checkbox" id="check" />
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+        </label>
+    <aside class="sidebar">
+      <div class="logo"><img src="img/banco.png" /></div>
+      
+    <label for="check">
+      <i class="fas fa-times" id="cancel"></i>
+      <ul>
+        <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="#meuperfil"><i class="fas fa-user-circle"></i>Meu Perfil</a></li>
+        <li><a href="#categorias"><i class="fas fa-stream"></i>Categorias</a></li>
+        <li><a href="#eventos"><i class="fas fa-search-location"></i>Eventos</a></li>
+        <li><a href="#batepapo"><i class="fas fa-comments"></i>Bate-Papo</a></li>
+        <li><a href="#institucional"><i class="fas fa-building"></i>Institucional</a></li>
+        <li><a href="#transparencia"><i class="fas fa-chess-board"></i>Transparência</a></li>
+        <li><a href="#faq"><i class="fas fa-question"></i>FAQ</a></li>
+        <li><a href="#bolsasdeestudos"><i class="fas fa-briefcase"></i>Bolsas de Estudos</a></li>
+        <li><a href="#faleconosco"><i class="fas fa-paper-plane"></i>Fale Conosco</a></li>
+      <br>
+      <div class="sair">
+           <div class="bottom-content">
+            <li class="nav-link">
+              <a href="#">
+                <i class="fas fa-sign-in-alt"></i>
+                <span class="text nav-text">Sair</span>
+              </a>
+            </li>
+           </div>
+           
+           <script>
+            document.querySelector(".sair a").addEventListener("click", function (e) {
+              e.preventDefault(); 
+             
+              document.getElementById("check").checked = false;
+              
+              window.location.href = "login1.html"; 
+            });
+          </script>
+          </ul>
+          <br>
+          
+          </div>
+          
+          
+  <section class="home" id="home"></section>
+
+    <main class="conteudo">
+        <div class="topo-banner">
+          <div class="bg-topo">
+            <img src="img/pincelada.png" alt="Fundo Pincelada" class="fundo-pincelada">
+            <div class="conteudo-banner">
+              <img src="img/pessoa1.png" alt="Pessoa 1" class="pessoa pessoa1">
+              <img src="img/pessoa2.png" alt="Pessoa 2" class="pessoa pessoa2">
+              <div class="texto-banner">
+                <h1>O Caminho Correto para<br>o Sucesso Começa Aqui!</h1>
+              </div>
+              <img src="img/logo_ueg.png" alt="Logo UEG" class="logo-ueg">
+            </div>
+          </div>
+        </div>
+        <div class="pesquisa">
+          <i class="fas fa-search"></i>
+          <input type="search" placeholder="buscar...">
+        </div>
+        <div class="perfil">
+          <div class="icone"><i class="fas fa-user-circle"></i></div>
+          <div class="dados">
+            <p>Gustavo</p>
+            <p>1982726</p>
+          </div>
+        </div>
+      </header>
+      <section class="processos">
+        <h2>Processos de Seleção em <span>Andamento</span></h2>
+        <div class="cards" id="cards-container">
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div class="painel-perfil">
+  <div class="topo-perfil">
+    <div class="img-perfil">
+      <img src="img" alt="Perfil">
+    </div>
+    <div class="info-perfil">
+      <h2>Gustavo Henrique Ferreira Rodrigues</h2>
+      <p><strong>ID Perfil:</strong> ----</p>
+      <p><strong>Última atualização do perfil:</strong> ----</p>
+      <p><strong>País de Nacionalidade:</strong> ----</p>
+      <p><strong>Nome em citações bibliográficas:</strong> ----</p>
+    </div>
+    <div class="logo-portal">
+      <a href="https://www.app.ueg.br/auth/acesso/index" target="_blank">
+        <img src="imagens/Portal.png" alt="Portal do Aluno" class="logo-img">
+      </a>
+      
+    </div>
+  </div>
+
+  <section class="meuperfil" id="meuperfil"></section>
+  <div class="abas">
+    <button>Formação acadêmica/titulação</button>
+    <button>Áreas de atuação</button>
+    <button>Patentes e Registros</button>
+    <button>Eventos</button>
+    <button>Produções</button>
+    <button>Histórico Acadêmico</button>
+    <button>Inovações</button>
+  </div>
+
+  <div class="conteudo-abas">
+    <img src="imagens/logoueg.png" alt="Universidade Estadual de Goiás" style="opacity: 0.1; margin-top: 50px;">
+  </div>
+  
+
+  <p class="aviso">Apenas os dados identificados como públicos pelo autor da página são apresentados na consulta de seu perfil.</p>
+</div>
+
+<style>
+.painel-perfil {
+  
+  background-color: #fff;
+  background-color: var(--nova-cor);
+  border: 2px solid #1e4c84;
+  padding: 20px;
+  margin: 200px auto 50px auto; 
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  color: #003366;
+  max-width: 1010px;
+  min-height: 600px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+.topo-perfil {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.img-perfil img {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.info-perfil {
+  color: var(--form-text);
+  flex: 1;
+  margin-left: 20px;
+}
+
+.logo-portal img.logo-img {
+  width: 180px;
+  height: auto;
+  border: 6px solid #9fe8f8;
+  border-radius: 6px;
+}
+
+
+.abas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.abas button {
+  background-color: #d9ecff;
+  border: 1px solid #1e4c84;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #003366;
+}
+
+.abas button:hover{
+  color: orange;
+  font-size: 12px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.abas button.ativo {
+  background-color: #1e4c84;
+  color: #fff;
+}
+
+.conteudo-abas {
+  min-height: 400px;
+  border: 1px solid #1e4c84;
+  padding: 20px;
+  background-color: #f9f9f9;
+  background-color: var(--nova-cor);
+  color: var(--form-text);
+  text-align: center;
+  font-size: 24px;
+  
+}
+
+.aviso {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #7195ad;
+  margin-left: 390px;
+}
+
+</style>
+
+<script>
+  const botoesAbas = document.querySelectorAll(".abas button");
+  const conteudo = document.querySelector(".conteudo-abas");
+
+  const dadosDasAbas = {
+    "Formação acadêmica/titulação": "Graduação em Ciência da Computação pela UEG.",
+    "Áreas de atuação": "Desenvolvimento Web, Inteligência Artificial, Banco de Dados.",
+    "Patentes e Registros": "Nenhum registro disponível.",
+    "Eventos": "Participação no Simpósio de Tecnologia 2025.",
+    "Produções": "Artigos publicados em periódicos acadêmicos.",
+    "Histórico Acadêmico": "Média Geral: 8.5 | Créditos: 200.",
+    "Inovações": "Sistema de recomendação para biblioteca acadêmica."
+  };
+
+  botoesAbas.forEach(botao => {
+    botao.addEventListener("click", () => {
+      const textoBotao = botao.innerText;
+      conteudo.innerHTML = `<p>${dadosDasAbas[textoBotao] || "Sem informações."}</p>`;
+
+      // Destacar botão ativo
+      botoesAbas.forEach(b => b.classList.remove("ativo"));
+      botao.classList.add("ativo");
+    });
+  });
+</script>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+    const theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+    localStorage.setItem("theme", theme);
+  }
+
+  const theme = localStorage.getItem("theme");
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
+  <script src="script.js"></script>
+</body>
+</html>
