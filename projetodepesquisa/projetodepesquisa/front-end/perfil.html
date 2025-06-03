@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil do Talento</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      body {
+        background-image: radial-gradient(rgb(73, 73, 183), antiquewhite);
+      }
+      .mascote {
+        width: 80px;
+        animation: flutuar 3s ease-in-out infinite;
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        cursor: default;
+      }
+      @keyframes roboBrincando {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0) rotate(0deg);
+        }
+        10% {
+          transform: translateY(-10px) translateX(5px) rotate(10deg);
+        }
+        20% {
+          transform: translateY(0) translateX(-5px) rotate(-10deg);
+        }
+        30% {
+          transform: translateY(-8px) translateX(3px) rotate(8deg);
+        }
+        40% {
+          transform: translateY(0) translateX(-3px) rotate(-8deg);
+        }
+        50% {
+          transform: translateY(-12px) translateX(0) rotate(0deg);
+        }
+        60% {
+          transform: translateY(0) translateX(4px) rotate(6deg);
+        }
+        70% {
+          transform: translateY(-6px) translateX(-4px) rotate(-6deg);
+        }
+        80% {
+          transform: translateY(0) translateX(2px) rotate(4deg);
+        }
+        90% {
+          transform: translateY(-5px) translateX(-2px) rotate(-4deg);
+        }
+      }
+
+      .mascote {
+        top: 580px;
+        width: 150px;
+        animation: roboBrincando 2.5s ease-in-out infinite;
+        transform-origin: center;
+      }
+      #chat-botao {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #4f46e5;
+        color: white;
+        padding: 12px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      #chat-box {
+        display: none;
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 300px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      #motivational-phrase {
+        position: fixed;
+        bottom: 190px;
+        right: 20px;
+        max-width: 220px;
+        background: #4f46e5;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        font-style: italic;
+        opacity: 0;
+        transition: opacity 1s ease;
+      }
+      #motivational-phrase.show {
+        opacity: 1;
+      }
+      input[readonly] {
+        background-color: transparent;
+        border: none;
+        cursor: default;
+        padding-left: 0;
+      }
+      #vagas-lista {
+        display: none;
+      }
+      #notificacoes-container {
+        position: fixed;
+        top: 20px;
+        right: 10px;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+      }
+      .notificacao {
+        background-color: #336514;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        font-weight: 500;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .notificacao.show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <img
+    src="imagens/banco.png"
+    alt="Logo Topo"
+    class="fixed top-4 left-4 h-16 z-50"
+  />
+  <img
+    src="img/logo_ueg.png"
+    alt="Logo Topo"
+    class="fixed top-4 right-4 h-20 z-50"
+  />
+
+  <body class="bg-gray-100 text-gray-800 mt-0 pt-2">
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+    <div class="max-w-4xl mx-auto px-6 pt-4">
+      <div
+        class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4"
+        data-aos="fade-up"
+      >
+        <div class="relative">
+          <img
+            id="avatar-img"
+            src="imagens/perfil icon.jpg"
+            alt="Avatar"
+            class="w-20 h-20 rounded-full object-cover"
+          />
+          <input
+            id="avatar-upload"
+            type="file"
+            accept="image/*"
+            class="hidden"
+          />
+          <button
+            id="upload-avatar-btn"
+            class="absolute bottom-0 right-0 bg-blue-600 text-white rounded-full p-1 text-xs hover:bg-blue-700"
+            style="display: none"
+          >
+            📷
+          </button>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <input
+              type="text"
+              id="nome"
+              value="Gustavo Henrique"
+              readonly
+              class="text-2xl font-bold w-full"
+            />
+            <button
+              id="edit-btn"
+              class="ml-4 bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700"
+            >
+              Editar Perfil
+            </button>
+            <button
+              id="save-btn"
+              class="ml-4 bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700"
+              style="display: none"
+            >
+              Salvar
+            </button>
+          </div>
+          <input
+            type="text"
+            id="profissao"
+            value="Desenvolvedor Front-End | Góias - GO"
+            readonly
+            class="text-gray-500 w-full mt-1"
+          />
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-xl shadow" data-aos="fade-right">
+          <h3 class="text-xl font-semibold mb-2">Formação Acadêmica</h3>
+          <ul class="list-disc ml-5 text-gray-700">
+            <li>
+              <input
+                type="text"
+                value="Graduação em Ciência da Computação"
+                readonly
+                class="w-full border-b border-transparent focus:border-blue-500"
+              />
+            </li>
+            <li>
+              <input
+                type="text"
+                value="Curso de UX Design"
+                readonly
+                class="w-full border-b border-transparent focus:border-blue-500"
+              />
+            </li>
+          </ul>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow" data-aos="fade-left">
+          <h3 class="text-xl font-semibold mb-2">Experiência Profissional</h3>
+          <ul class="list-disc ml-5 text-gray-700">
+            <li>
+              <input
+                type="text"
+                value="Estágio Front-End - Empresa ..."
+                readonly
+                class="w-full border-b border-transparent focus:border-blue-500"
+              />
+            </li>
+            <li>
+              <input
+                type="text"
+                value="Desenvolvedor Júnior - Empresa ..."
+                readonly
+                class="w-full border-b border-transparent focus:border-blue-500"
+              />
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-white p-4 rounded-xl shadow" data-aos="zoom-in">
+        <h3 class="text-xl font-semibold mb-4">Habilidades Principais</h3>
+        <canvas
+          id="skillsChart"
+          class="w-full"
+          style="max-height: 300px"
+        ></canvas>
+        <div id="skills-edit" class="mt-4 space-y-2 hidden">
+          <div class="flex space-x-2">
+            <input
+              type="text"
+              class="skill-name border p-1 rounded w-1/2"
+              value="HTML/CSS"
+            />
+            <input
+              type="number"
+              class="skill-value border p-1 rounded w-1/2"
+              value="90"
+              min="0"
+              max="100"
+            />
+          </div>
+          <div class="flex space-x-2">
+            <input
+              type="text"
+              class="skill-name border p-1 rounded w-1/2"
+              value="JavaScript"
+            />
+            <input
+              type="number"
+              class="skill-value border p-1 rounded w-1/2"
+              value="80"
+              min="0"
+              max="100"
+            />
+          </div>
+          <div class="flex space-x-2">
+            <input
+              type="text"
+              class="skill-name border p-1 rounded w-1/2"
+              value="React"
+            />
+            <input
+              type="number"
+              class="skill-value border p-1 rounded w-1/2"
+              value="70"
+              min="0"
+              max="100"
+            />
+          </div>
+        </div>
+      </div>
+      <div id="notificacoes-container">
+        <div id="vagas-lista">
+          <input
+            type="text"
+            value="Vaga: Desenvolvedor Frontend - Empresa ABC"
+          />
+          <input type="text" value="Vaga: Analista de Dados - Empresa XYZ" />
+          <input
+            type="text"
+            value="Vaga: Estagiário de Marketing - Empresa 123"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="max-w-4xl mx-auto p-6 space-y-6">
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Áreas de Interesse
+        </h3>
+        <div class="grid grid-cols-2 gap-4 text-gray-700">
+          <span class="px-3 py-1 bg-gray-100 rounded-full" data-editable
+            >Desenvolvimento de Software</span
+          >
+          <span class="px-3 py-1 bg-gray-100 rounded-full" data-editable
+            >Ciência de Dados</span
+          >
+          <span class="px-3 py-1 bg-gray-100 rounded-full" data-editable
+            >Engenharia Ambiental</span
+          >
+          <span class="px-3 py-1 bg-gray-100 rounded-full" data-editable
+            >Educação e Pedagogia</span
+          >
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Objetivos Profissionais
+        </h3>
+        <span class="text-gray-700 leading-relaxed" data-editable
+          >Desejo atuar em pesquisa aplicada na área de
+          biotecnologia,contribuindo para inovações sustentáveis.
+        </span>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Experiência Acadêmica
+        </h3>
+        <p class="text-gray-500 mb-2" data-editable>
+          Inclua estágios, monitorias, ICs ou outros projetos.
+        </p>
+        <p class="text-gray-700 leading-relaxed" data-editable>
+          Participação em projeto de pesquisa sobre inteligência artificial na
+          Universidade ABC.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-right">
+          <h3 class="text-2xl font-semibold mb-4 text-gray-800">Idiomas</h3>
+          <ul class="text-gray-700">
+            <span class="bg-gray-100 p-2 rounded mb-3 block" data-editable
+              >Português - Nativo</span
+            >
+            <span class="bg-gray-100 p-2 rounded mb-3 block" data-editable
+              >Inglês - Avançado</span
+            >
+            <span class="bg-gray-100 p-2 rounded mb-3 block" data-editable
+              >Espanhol - Intermediário</span
+            >
+          </ul>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-left">
+          <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+            Participações Acadêmicas/Profissionais
+          </h3>
+          <div class="text-gray-700">
+            <span class="bg-gray-100 p-2 rounded mb-3 block" data-editable
+              >Palestra de React - Udemy</span
+            >
+            <span class="bg-gray-100 p-2 rounded mb-3 block" data-editable
+              >Evento Google Analytics Individual Qualification
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Projetos Destacados
+        </h3>
+        <ul class="space-y-2 text-gray-700">
+          <span class="bg-gray-100 p-2 rounded" data-editable
+            >Dashboard de Vendas em React - Projeto pessoal
+          </span>
+          <span class="bg-gray-100 p-2 rounded" data-editable
+            >Landing Page para ONG - Freelancer
+          </span>
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Redes Profissionais
+        </h3>
+        <ul class="space-y-2 text-blue-600">
+          <li>
+            <a
+              href="https://linkedin.com/in/seunome"
+              target="_blank"
+              class="hover:underline"
+              >LinkedIn</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/seunome"
+              target="_blank"
+              class="hover:underline"
+              >GitHub</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://seusite.com"
+              target="_blank"
+              class="hover:underline"
+              >Portfólio</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <img src="imagens/mascote.png" alt="Mascote" class="mascote" id="mascote" />
+    <div id="motivational-phrase"></div>
+    <div id="chat-botao">💬</div>
+    <div id="chat-box">
+      <label for="chat-target" class="block font-bold mb-1"
+        >Conversar com:</label
+      >
+      <select id="chat-target" class="w-full mb-2 border p-1 rounded">
+        <option value="mascote">🤖 Mascote</option>
+        <option value="admin">🛡️ Equipe suporte</option>
+      </select>
+      <div
+        id="chat-mensagens"
+        class="h-32 overflow-y-auto border p-2 mb-2 rounded text-sm bg-gray-50"
+      ></div>
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Digite sua mensagem..."
+        class="w-full p-2 border rounded"
+      />
+    </div>
+
+    <script>
+      AOS.init();
+
+      const editBtn = document.getElementById("edit-btn");
+      const saveBtn = document.getElementById("save-btn");
+      const nomeInput = document.getElementById("nome");
+      const profissaoInput = document.getElementById("profissao");
+      const avatarUpload = document.getElementById("avatar-upload");
+      const uploadAvatarBtn = document.getElementById("upload-avatar-btn");
+      const avatarImg = document.getElementById("avatar-img");
+
+      // Carregar dados do localStorage
+      window.addEventListener("DOMContentLoaded", () => {
+        const savedData = JSON.parse(localStorage.getItem("perfil")) || {};
+        for (const key in savedData) {
+          const el = document.getElementById(key);
+          if (el && el.tagName === "INPUT") {
+            el.value = savedData[key];
+          }
+        }
+        if (savedData.avatar) {
+          document.getElementById("avatar-img").src = savedData.avatar;
+        }
+        if (savedData.spans) {
+          savedData.spans.forEach(({ parentId, value }) => {
+            const container = document.getElementById(parentId);
+            if (container) {
+              const span = document.createElement("span");
+              span.className = "px-3 py-1 bg-gray-100 rounded-full";
+              span.setAttribute("data-editable", "true");
+              span.textContent = value;
+              container.appendChild(span);
+            }
+          });
+        }
+      });
+
+      function toggleEdit(enable) {
+        document.querySelectorAll("input").forEach((el) => {
+          if (el.id !== "avatar-upload") {
+            el.readOnly = !enable;
+            el.classList.toggle("bg-gray-100", !enable);
+            el.classList.toggle("border", enable);
+          }
+        });
+
+        if (enable) {
+          document.querySelectorAll("span[data-editable]").forEach((span) => {
+            const input = document.createElement("input");
+            input.type = "text";
+            input.value = span.textContent;
+            input.className = "px-3 py-1 border rounded w-full mb-2";
+            input.setAttribute("data-original", span.textContent);
+            input.setAttribute("data-editable", "true");
+            input.setAttribute("data-parent", span.parentElement.id);
+            span.replaceWith(input);
+          });
+        } else {
+          document.querySelectorAll("input[data-original]").forEach((input) => {
+            const span = document.createElement("span");
+            span.textContent = input.value;
+            span.className = "px-3 py-1 bg-gray-100 rounded-full";
+            span.setAttribute("data-editable", "true");
+            input.replaceWith(span);
+          });
+        }
+
+        uploadAvatarBtn.style.display = enable ? "block" : "none";
+        saveBtn.style.display = enable ? "inline-block" : "none";
+        editBtn.style.display = enable ? "none" : "inline-block";
+        document
+          .getElementById("skills-edit")
+          .classList.toggle("hidden", !enable);
+      }
+
+      editBtn.addEventListener("click", () => toggleEdit(true));
+
+      saveBtn.addEventListener("click", () => {
+        toggleEdit(false);
+
+        const savedData = {};
+        document.querySelectorAll("input").forEach((el) => {
+          if (el.id && el.id !== "avatar-upload") {
+            savedData[el.id] = el.value;
+          }
+        });
+
+        const spanData = [];
+        document.querySelectorAll("span[data-editable]").forEach((span) => {
+          if (span.parentElement && span.parentElement.id) {
+            spanData.push({
+              parentId: span.parentElement.id,
+              value: span.textContent,
+            });
+          }
+        });
+        savedData.spans = spanData;
+
+        const avatarSrc = document.getElementById("avatar-img").src;
+        if (avatarSrc.startsWith("data:image")) {
+          savedData.avatar = avatarSrc;
+        }
+
+        localStorage.setItem("perfil", JSON.stringify(savedData));
+        alert("Perfil salvo com sucesso!");
+      });
+
+      uploadAvatarBtn.addEventListener("click", () => avatarUpload.click());
+
+      avatarUpload.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("avatar-img").src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      const acadInputs = document.querySelectorAll(
+        "div[data-aos='fade-right'] ul li input"
+      );
+      const expInputs = document.querySelectorAll(
+        "div[data-aos='fade-left'] ul li input"
+      );
+      const vagasInputs = document.querySelectorAll("#vagas-lista input");
+
+      const skillsEditSection = document.getElementById("skills-edit");
+      const skillNames = document.querySelectorAll(".skill-name");
+      const skillValues = document.querySelectorAll(".skill-value");
+
+      let skillsChart;
+
+      const ctx = document.getElementById("skillsChart").getContext("2d");
+      skillsChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["HTML/CSS", "JavaScript", "React"],
+          datasets: [
+            {
+              label: "Nível de Proficiência (%)",
+              data: [90, 80, 70],
+              backgroundColor: [
+                "rgba(59, 130, 246, 0.7)",
+                "rgba(234, 179, 8, 0.7)",
+                "rgba(79, 70, 229, 0.7)",
+              ],
+              borderRadius: 5,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true, max: 100, ticks: { stepSize: 10 } },
+          },
+          plugins: { legend: { display: false } },
+        },
+      });
+
+      function updateChartFromInputs() {
+        const labels = Array.from(skillNames).map((input) => input.value);
+        const values = Array.from(skillValues).map((input) =>
+          Number(input.value)
+        );
+        skillsChart.data.labels = labels;
+        skillsChart.data.datasets[0].data = values;
+        skillsChart.update();
+      }
+
+      function toggleEditMode(editing) {
+        nomeInput.readOnly = !editing;
+        profissaoInput.readOnly = !editing;
+        acadInputs.forEach((input) => (input.readOnly = !editing));
+        expInputs.forEach((input) => (input.readOnly = !editing));
+        vagasInputs.forEach((input) => (input.readOnly = !editing));
+        skillsEditSection.style.display = editing ? "block" : "none";
+
+        if (editing) {
+          editBtn.style.display = "none";
+          saveBtn.style.display = "inline-block";
+          uploadAvatarBtn.style.display = "block";
+          [
+            ...acadInputs,
+            ...expInputs,
+            ...vagasInputs,
+            nomeInput,
+            profissaoInput,
+          ].forEach((i) =>
+            i.classList.add("border", "border-blue-500", "rounded")
+          );
+        } else {
+          editBtn.style.display = "inline-block";
+          saveBtn.style.display = "none";
+          uploadAvatarBtn.style.display = "none";
+          [
+            ...acadInputs,
+            ...expInputs,
+            ...vagasInputs,
+            nomeInput,
+            profissaoInput,
+          ].forEach((i) =>
+            i.classList.remove("border", "border-blue-500", "rounded")
+          );
+          updateChartFromInputs();
+        }
+      }
+
+      editBtn.addEventListener("click", () => toggleEditMode(true));
+      saveBtn.addEventListener("click", () => {
+        toggleEditMode(false);
+        alert("Perfil salvo com sucesso!");
+      });
+
+      uploadAvatarBtn.addEventListener("click", () => avatarUpload.click());
+      avatarUpload.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            avatarImg.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      const phrases = [
+        "Oi sou o mascote da BTA, me chamo Geni de Genius para representar nós dois",
+        "Que bom te ver denovo, já é de casa né",
+        "Fique de olho nas novidades!",
+        "Já viu os novos eventos por ai? tudo nota 10!",
+        "Dando uma olhada por ai né, só tem qualidade massa aqui!",
+        "Cada vez  mais perto do sucesso!",
+        "Nunca desista de ir mais longe!",
+        "Você está indo muito bem!",
+        "Continue se esforçando!",
+        "Cada passo conta!",
+        "Seu talento é único!",
+        "Acredite no seu potencial!",
+      ];
+      const phraseEl = document.getElementById("motivational-phrase");
+      let phraseIndex = 0;
+      function showPhrase() {
+        phraseEl.textContent = phrases[phraseIndex];
+        phraseEl.classList.add("show");
+        setTimeout(() => {
+          phraseEl.classList.remove("show");
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(showPhrase, 1000);
+        }, 9000);
+      }
+      showPhrase();
+
+      document.getElementById("chat-botao").addEventListener("click", () => {
+        const chat = document.getElementById("chat-box");
+        chat.style.display = chat.style.display === "block" ? "none" : "block";
+      });
+      const chatBox = document.getElementById("chat-box");
+      const chatMensagens = document.getElementById("chat-mensagens");
+      const chatInput = document.getElementById("chat-input");
+      const chatTarget = document.getElementById("chat-target");
+      chatTarget.addEventListener("change", () => {
+        chatMensagens.innerHTML = "";
+      });
+
+      const respostasMascote = [
+        "Olá!Estou aqui para ajudar!",
+        "Você já conferiu suas habilidades?",
+        "Vamos encontrar a melhor vaga para você.",
+        "Se não conseguimos resolver entre diretamente em contato com a equipe de suporte (...)!",
+      ];
+
+      chatInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          const msg = chatInput.value.trim();
+          if (!msg) return;
+          const destino = chatTarget.value;
+
+          chatMensagens.innerHTML += `<div><strong>Você:</strong> ${msg}</div>`;
+
+          if (destino === "mascote") {
+            const resposta =
+              respostasMascote[
+                Math.floor(Math.random() * respostasMascote.length)
+              ];
+            setTimeout(() => {
+              chatMensagens.innerHTML += `<div><strong>Mascote:</strong> ${resposta}</div>`;
+              chatMensagens.scrollTop = chatMensagens.scrollHeight;
+            }, 1000);
+          } else {
+            setTimeout(() => {
+              chatMensagens.innerHTML += `<div><strong>${destino}:</strong> (resposta simulada)</div>`;
+              chatMensagens.scrollTop = chatMensagens.scrollHeight;
+            }, 1000);
+          }
+
+          chatInput.value = "";
+          chatMensagens.scrollTop = chatMensagens.scrollHeight;
+        }
+      });
+      function mostrarNotificacao(mensagem, duracao = 4000) {
+        const container = document.getElementById("notificacoes-container");
+        const notif = document.createElement("div");
+        notif.className = "notificacao";
+        notif.textContent = mensagem;
+        container.appendChild(notif);
+
+        setTimeout(() => notif.classList.add("show"), 50);
+
+        setTimeout(() => {
+          notif.classList.remove("show");
+          setTimeout(() => notif.remove(), 500);
+        }, duracao);
+      }
+
+      window.addEventListener("load", () => {
+        const vagas = document.querySelectorAll("#vagas-lista input");
+        vagas.forEach((vaga, index) => {
+          setTimeout(() => {
+            mostrarNotificacao(vaga.value);
+          }, index * 1500);
+        });
+      });
+    </script>
+  </body>
+</html>

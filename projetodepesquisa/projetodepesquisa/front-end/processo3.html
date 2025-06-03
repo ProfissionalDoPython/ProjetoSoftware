@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desenvolvedor Front-End</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f0f2f5;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: auto;
+        background: #fff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      h1 {
+        color: red;
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        margin-top: 30px;
+        font-size: 1.3rem;
+        color: #333;
+      }
+
+
+      ul {
+        margin-top: 10px;
+        padding-left: 20px;
+      }
+
+      ul li {
+        margin-bottom: 8px;
+      }
+
+      .datas,
+      .status {
+        margin-top: 10px;
+        font-size: 1rem;
+      }
+
+      .status span.aberto {
+        color: green;
+        font-weight: bold;
+      }
+
+      .btn-candidatar,
+      .btn-voltar {
+        display: inline-block;
+        margin-top: 30px;
+        margin-right: 10px;
+        padding: 12px 24px;
+        background: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+      }
+
+      .btn-voltar {
+        background: #888;
+      }
+
+      .btn-candidatar:hover {
+        background: #388e3c;
+      }
+
+      .btn-voltar:hover {
+        background: #555;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 20px;
+        }
+        h1 {
+          font-size: 1.5rem;
+        }
+        h2 {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+     <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+      </script>
+    <main class="container fade-in">
+      <section class="vaga">
+        <h1>Desenvolvedor Front-End</h1>
+        <p class="datas">
+            <i class="fa-solid fa-calendar-days"></i>
+            <strong>Início:</strong> 10/05/2025 |
+            <strong>Fim:</strong> 20/05/2025
+          </p>
+          <p class="status">
+            <i class="fa-solid fa-circle-check"></i>
+            Status: <span class="aberto"> Recebendo candidaturas</span>
+          </p>
+        </div>
+      </div>
+
+        <h2><i class="fas fa-building"></i> Sobre a Empresa</h2>
+        <p>
+          A CodeWave é uma empresa focada em soluções web modernas e acessíveis.
+        </p>
+
+        <h2><i class="fas fa-search"></i> O que Procuramos</h2>
+        <p>
+          Desenvolvedores apaixonados por código limpo, interfaces intuitivas e
+          boas práticas.
+        </p>
+
+        <h2><i class="fas fa-check-circle"></i> Requisitos</h2>
+        <ul>
+          <li>HTML, CSS e JavaScript</li>
+          <li>React ou Vue</li>
+          <li>Git</li>
+        </ul>
+
+        <h2><i class="fas fa-star"></i> Qualificações Desejáveis</h2>
+        <ul>
+          <li>Noções de UI/UX</li>
+          <li>Experiência com APIs REST</li>
+        </ul>
+
+        <h2><i class="fas fa-gift"></i> Benefícios</h2>
+        <ul>
+          <li>Salário R$ 4.000 a R$ 5.500</li>
+          <li>Plano de saúde e odontológico</li>
+          <li>Horário flexível</li>
+        </ul>
+
+        <h2><i class="fas fa-laptop-house"></i> Modelo de Trabalho</h2>
+        <p>100% remoto</p>
+
+        <a href="#" class="btn-candidatar"
+          ><i class="fas fa-paper-plane"></i> Quero me candidatar</a
+        >
+        <a href="principal.html" class="btn-voltar"
+          ><i class="fas fa-arrow-left"></i> Voltar</a
+        >
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estágio em Design</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f0f2f5;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 850px;
+        margin: auto;
+        background: #fff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      h1 {
+        color: #4caf50;
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        margin-top: 30px;
+        font-size: 1.3rem;
+        color: #333;
+      }
+
+      ul {
+        margin-top: 10px;
+        padding-left: 20px;
+      }
+
+      ul li {
+        margin-bottom: 8px;
+      }
+
+      .datas,
+      .status {
+        margin-top: 10px;
+        font-size: 1rem;
+      }
+
+      .status span.aberto {
+        color: green;
+        font-weight: bold;
+      }
+
+      .btn-candidatar,
+      .btn-voltar {
+        display: inline-block;
+        margin-top: 30px;
+        margin-right: 10px;
+        padding: 12px 24px;
+        background: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+      }
+
+      .btn-voltar {
+        background: #888;
+      }
+
+      .btn-candidatar:hover {
+        background: #388e3c;
+      }
+
+      .btn-voltar:hover {
+        background: #555;
+      }
+
+      /* Fade-in animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsividade */
+      @media (max-width: 600px) {
+        .container {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        h2 {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+     <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+      </script>
+    <main class="container fade-in">
+          <h1>Estágio em Design</h1>
+          <p class="datas">
+            <i class="fa-solid fa-calendar-days"></i>
+            <strong>Início:</strong> 10/05/2025 |
+            <strong>Fim:</strong> 20/05/2025
+          </p>
+          <p class="status">
+            <i class="fa-solid fa-circle-check"></i>
+            Status: <span class="aberto"> Recebendo candidaturas</span>
+          </p>
+        </div>
+      </div>
+
+      <h2><i class="fas fa-building"></i> Sobre a Empresa</h2>
+      <p>
+        A Criativa Labs é uma startup de inovação digital que atua na criação de
+        experiências visuais impactantes para plataformas web e mobile.
+      </p>
+
+      <h2><i class="fas fa-search"></i> O que Procuramos</h2>
+      <p>
+        Estudantes criativos que estejam dispostos a aprender e colaborar em
+        projetos de design gráfico e UI/UX para diversos clientes.
+      </p>
+
+      <h2><i class="fas fa-check-circle"></i> Requisitos</h2>
+      <ul>
+        <li>Cursando superior em Design, Publicidade ou áreas afins</li>
+        <li>Conhecimento básico em Figma ou Adobe</li>
+        <li>Portfólio (pode ser acadêmico ou pessoal)</li>
+      </ul>
+
+      <h2><i class="fas fa-star"></i> Qualificações Desejáveis</h2>
+      <ul>
+        <li>Noções de experiência do usuário</li>
+        <li>Organização e comunicação</li>
+      </ul>
+
+      <h2><i class="fas fa-gift"></i> Benefícios</h2>
+      <ul>
+        <li>Bolsa de R$ 1.000,00</li>
+        <li>Vale-transporte</li>
+        <li>Possibilidade de efetivação</li>
+      </ul>
+
+      <h2><i class="fas fa-laptop-house"></i> Modelo de Trabalho</h2>
+      <p>Remoto com reuniões semanais online.</p>
+
+      <a href="#" class="btn-candidatar"
+        ><i class="fa-solid fa-paper-plane"></i> Quero me candidatar</a
+      >
+      <a href="principal.html" class="btn-voltar"
+        ><i class="fa-solid fa-arrow-left"></i> Voltar</a
+      >
+    </main>
+  </body>
+</html>
