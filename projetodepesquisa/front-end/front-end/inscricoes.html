@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inscrições Acadêmicas</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 40px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #0d47a1;
+        margin-bottom: 40px;
+      }
+
+      .eventos-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .evento {
+        background-color: #2196f3;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .evento:hover {
+        background-color: #1976d2;
+      }
+
+      .evento h2 {
+        margin: 0 0 10px 0;
+        font-size: 1.5em;
+      }
+
+      .evento p {
+        margin-bottom: 15px;
+        font-size: 1em;
+      }
+
+      @media (max-width: 768px) {
+        .eventos-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+    <div class="container">
+      <h1>Inscrições Acadêmicas</h1>
+
+      <div class="eventos-container">
+        <div class="evento">
+          <a href="inscricao-evento1.html">
+            <h2>Evento de Pesquisa em Ciências</h2>
+            <p>
+              Participe deste evento dedicado à pesquisa acadêmica em ciências
+              exatas e humanas.
+            </p>
+          </a>
+        </div>
+
+        <div class="evento">
+          <a href="inscricao-evento2.html">
+            <h2>Processo Seletivo de Monitoria</h2>
+            <p>
+              Inscreva-se para o processo seletivo de monitoria acadêmica para o
+              semestre de 2025.
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+[
+  {
+    "cpf": "12345678900",
+    "email": "admin@gmail.ueg.br",
+    "senha": "123456",
+    "tipoPerfil": "administrador"
+  },
+  {
+    "cpf": "98765432100",
+    "email": "aluno.membro@gmail.ueg.br",
+    "senha": "123456",
+    "tipoPerfil": "aluno"
+  }
+]
