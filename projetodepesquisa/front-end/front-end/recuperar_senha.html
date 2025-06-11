@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar senha</title>
+    <link rel="stylesheet" href="recuperar_senha.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+     <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+      </script>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <div class="container">
+        <h1>Recuperar Senha</h1>
+
+            <div class="flash-message {{ 'Sucesso' if 'sucesso' in messages[0] else 'error' }}">
+                -Digite e verifique o seu email-
+            </div>
+            
+        <form method="POST">
+            <label for="nova_senha">Recuperar senha:</label>
+            <div class="form-group password-group">
+                <i class="fas fa-lock icon"></i>
+                <input type="email" name="recuperar_senha" placeholder="Digite o seu email" id="recuperar_senha" required>
+            </div>            
+        </form>
+
+        <p><a href="login1.html">Voltar ao login</a></p>
+    </div>
+    <div class="header">
+        <img src="imagens/banco.png" alt="Banco de Talentos">
+        <p>UNIVERSIDADE ESTADUAL DE GOIÁS</p>
+    </div>
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+          }
+        </script>
+</body>
+</html>

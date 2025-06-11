@@ -1,0 +1,81 @@
+[
+  {
+    "cpf": "12345678900",
+    "nome": "Anderson Cavalcante",
+    "profissao": "Administrador de Sistemas",
+    "formacaoAcademica": [
+      "Mestrado em Gestão de TI",
+      "Pós-Graduação em Segurança da Informação"
+    ],
+    "experienciaProfissional": [
+      "Gerente de TI - Empresa XYZ (5 anos)",
+      "Coordenador de Projetos - Startup ABC (3 anos)"
+    ],
+    "habilidades": {
+      "Gestão de Projetos": 95,
+      "Segurança da Informação": 90,
+      "Liderança": 85
+    },
+    "areasInteresse": [
+      "Gestão de Projetos",
+      "Segurança Cibernética",
+      "Transformação Digital"
+    ],
+    "objetivosProfissionais": "Liderar a equipe de TI da UEG e implementar soluções inovadoras para a comunidade acadêmica.",
+    "experienciaAcademica": "Professor Convidado em cursos de pós-graduação.",
+    "idiomas": [
+      "Português - Nativo",
+      "Inglês - Fluente",
+      "Espanhol - Básico"
+    ],
+    "participacoes": [
+      "Conferência Nacional de Segurança de Dados",
+      "Workshop de Liderança e Gestão de Equipes"
+    ],
+    "projetosDestacados": [
+      "Implementação de Sistema de Gestão Acadêmica (UEG)",
+      "Desenvolvimento de Política de Segurança de Dados (Empresa XYZ)"
+    ],
+    "linkedin": "https://linkedin.com/in/administrador",
+    "github": "",
+    "portfolio": ""
+  },
+  {
+    "cpf": "98765432100",
+    "nome": "Gustavo Henrique",
+    "profissao": "Estudante de Sistemas para Internet",
+    "formacaoAcademica": [
+      "Graduação em Sistemas para Internet (cursando)"
+    ],
+    "experienciaProfissional": [
+      "Estagiário de Suporte Técnico - Empresa Beta (6 meses)"
+    ],
+    "habilidades": {
+      "HTML/CSS": 80,
+      "JavaScript": 70,
+      "Java": 65
+    },
+    "areasInteresse": [
+      "Desenvolvimento Web",
+      "Inteligência Artificial",
+      "Desenvolvimento de Jogos"
+    ],
+    "objetivosProfissionais": "Concluir a graduação com excelência, buscar um estágio em desenvolvimento de software e iniciar minha carreira como programador.",
+    "experienciaAcademica": "Participação em projeto de Iniciação Científica sobre processamento de linguagem natural.",
+    "idiomas": [
+      "Português - Nativo",
+      "Inglês - Intermediário"
+    ],
+    "participacoes": [
+      "Maratona de Programação da UEG (2º lugar)",
+      "Workshop de ReactJS"
+    ],
+    "projetosDestacados": [
+      "Sistema de Gerenciamento de Biblioteca (Projeto Universitário)",
+      "Página de Portfólio Pessoal (HTML/CSS/JS)"
+    ],
+    "linkedin": "https://linkedin.com/in/alunomembro",
+    "github": "https://github.com/alunomembro",
+    "portfolio": "https://alunomembro.com"
+  }
+]

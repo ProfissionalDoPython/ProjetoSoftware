@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil do Talento</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      body {
+        background-image: radial-gradient(rgb(73, 73, 183), antiquewhite);
+      }
+      .mascote {
+        width: 80px;
+        animation: flutuar 3s ease-in-out infinite;
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        cursor: default;
+      }
+      @keyframes roboBrincando {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0) rotate(0deg);
+        }
+        10% {
+          transform: translateY(-10px) translateX(5px) rotate(10deg);
+        }
+        20% {
+          transform: translateY(0) translateX(-5px) rotate(-10deg);
+        }
+        30% {
+          transform: translateY(-8px) translateX(3px) rotate(8deg);
+        }
+        40% {
+          transform: translateY(0) translateX(-3px) rotate(-8deg);
+        }
+        50% {
+          transform: translateY(-12px) translateX(0) rotate(0deg);
+        }
+        60% {
+          transform: translateY(0) translateX(4px) rotate(6deg);
+        }
+        70% {
+          transform: translateY(-6px) translateX(-4px) rotate(-6deg);
+        }
+        80% {
+          transform: translateY(0) translateX(2px) rotate(4deg);
+        }
+        90% {
+          transform: translateY(-5px) translateX(-2px) rotate(-4deg);
+        }
+      }
+
+      .mascote {
+        top: 580px;
+        width: 150px;
+        animation: roboBrincando 2.5s ease-in-out infinite;
+        transform-origin: center;
+      }
+      #chat-botao {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #4f46e5;
+        color: white;
+        padding: 12px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      #chat-box {
+        display: none;
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 300px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      #motivational-phrase {
+        position: fixed;
+        bottom: 190px;
+        right: 20px;
+        max-width: 220px;
+        background: #4f46e5;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        font-style: italic;
+        opacity: 0;
+        transition: opacity 1s ease;
+      }
+      #motivational-phrase.show {
+        opacity: 1;
+      }
+
+      /* Estilos para inputs em modo de leitura (readonly) */
+      input[readonly] {
+        background-color: transparent;
+        border: none;
+        cursor: default;
+        padding-left: 0;
+        box-shadow: none; /* Garante que não há sombra */
+      }
+      /* Estilos para inputs editáveis */
+      input[data-editable-input="true"], textarea[data-editable-input="true"] {
+        background-color: #f3f4f6; /* Fundo levemente cinza para indicar editável */
+        border: 1px solid #d1d5db; /* Borda sutil */
+        padding: 4px;
+        border-radius: 4px;
+      }
+
+      /* Estilo para spans de exibição */
+      span[data-display-span="true"] {
+        background-color: #e5e7eb; /* Fundo cinza para elementos de exibição */
+        padding: 4px 8px;
+        border-radius: 9999px; /* rounded-full */
+        display: inline-block; /* Para que o padding funcione bem */
+      }
+      /* Estilo para spans que representam itens de lista */
+      ul span[data-display-span="true"] {
+          display: block; /* Para que ocupem a linha toda em listas */
+          margin-bottom: 4px; /* Espaçamento entre os itens da lista */
+      }
+
+      #vagas-lista {
+        display: none;
+      }
+      #notificacoes-container {
+        position: fixed;
+        top: 20px;
+        right: 10px;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+      }
+      .notificacao {
+        background-color: #336514;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        font-weight: 500;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .notificacao.show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <img
+    src="/img/banco.png"
+    alt="Logo Topo"
+    class="fixed top-4 left-4 h-16 z-50"
+  />
+  <img
+    src="/img/logo_ueg.png"
+    alt="Logo Topo"
+    class="fixed top-4 right-4 h-20 z-50"
+  />
+
+  <body class="bg-gray-100 text-gray-800 mt-0 pt-2">
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+    <div class="max-w-4xl mx-auto px-6 pt-4">
+      <div
+        class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4"
+        data-aos="fade-up"
+      >
+        <div class="relative">
+          <img
+            id="avatar-img"
+            src="/img/perfil icon.jpg"
+            alt="Avatar"
+            class="w-20 h-20 rounded-full object-cover"
+          />
+          <input
+            id="avatar-upload"
+            type="file"
+            accept="image/*"
+            class="hidden"
+          />
+          <button
+            id="upload-avatar-btn"
+            class="absolute bottom-0 right-0 bg-blue-600 text-white rounded-full p-1 text-xs hover:bg-blue-700"
+            style="display: none"
+          >
+            📷
+          </button>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <input
+              type="text"
+              id="nome"
+              value="Gustavo Henrique"
+              readonly
+              class="text-2xl font-bold w-full"
+            />
+            <button
+              id="edit-btn"
+              class="ml-4 bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700"
+            >
+              Editar Perfil
+            </button>
+            <button
+              id="save-btn"
+              class="ml-4 bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700"
+              style="display: none"
+            >
+              Salvar
+            </button>
+          </div>
+          <input
+            type="text"
+            id="profissao"
+            value="Desenvolvedor Front-End | Góias - GO"
+            readonly
+            class="text-gray-500 w-full mt-1"
+          />
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-xl shadow" data-aos="fade-right">
+          <h3 class="text-xl font-semibold mb-2">Formação Acadêmica</h3>
+          <ul id="formacaoAcademicaList" class="list-disc ml-5 text-gray-700">
+            <li>
+              <span data-display-span="true">Graduação em Ciência da Computação</span>
+            </li>
+            <li>
+              <span data-display-span="true">Curso de UX Design</span>
+            </li>
+          </ul>
+          <button id="addFormacaoBtn" class="bg-blue-500 text-white px-2 py-1 rounded text-sm mt-2 hidden">Adicionar Formação</button>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow" data-aos="fade-left">
+          <h3 class="text-xl font-semibold mb-2">Experiência Profissional</h3>
+          <ul id="experienciaProfissionalList" class="list-disc ml-5 text-gray-700">
+            <li>
+              <span data-display-span="true">Estágio Front-End - Empresa ...</span>
+            </li>
+            <li>
+              <span data-display-span="true">Desenvolvedor Júnior - Empresa ...</span>
+            </li>
+          </ul>
+          <button id="addExperienciaBtn" class="bg-blue-500 text-white px-2 py-1 rounded text-sm mt-2 hidden">Adicionar Experiência</button>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-white p-4 rounded-xl shadow" data-aos="zoom-in">
+        <h3 class="text-xl font-semibold mb-4">Habilidades Principais</h3>
+        <canvas
+          id="skillsChart"
+          class="w-full"
+          style="max-height: 300px"
+        ></canvas>
+        <div id="skills-edit" class="mt-4 space-y-2 hidden">
+          </div>
+        <button id="addSkillBtn" class="bg-blue-500 text-white px-2 py-1 rounded text-sm mt-2 hidden">Adicionar Habilidade</button>
+      </div>
+      <div id="notificacoes-container">
+        <div id="vagas-lista" style="display: none;">
+          <input type="text" value="Vaga: Desenvolvedor Frontend - Empresa ABC" />
+          <input type="text" value="Vaga: Analista de Dados - Empresa XYZ" />
+          <input type="text" value="Vaga: Estagiário de Marketing - Empresa 123" />
+        </div>
+      </div>
+    </div>
+    <div class="max-w-4xl mx-auto p-6 space-y-6">
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Áreas de Interesse
+        </h3>
+        <ul id="areasInteresseList" class="grid grid-cols-2 gap-4 text-gray-700">
+            <span data-display-span="true" class="px-3 py-1 bg-gray-100 rounded-full">Desenvolvimento de Software</span>
+          <span data-display-span="true" class="px-3 py-1 bg-gray-100 rounded-full">Ciência de Dados</span>
+          <span data-display-span="true" class="px-3 py-1 bg-gray-100 rounded-full">Engenharia Ambiental</span>
+          <span data-display-span="true" class="px-3 py-1 bg-gray-100 rounded-full">Educação e Pedagogia</span>
+        </ul>
+        <button id="addAreasInteresseBtn" class="bg-blue-500 text-white px-2 py-1 rounded text-sm mt-2 hidden">Adicionar Área</button>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Objetivos Profissionais
+        </h3>
+        <span id="objetivosProfissionaisText" class="text-gray-700 leading-relaxed" data-display-span="true"
+          >Desejo atuar em pesquisa aplicada na área de biotecnologia, contribuindo para inovações sustentáveis.
+        </span>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Experiência Acadêmica
+        </h3>
+        <span id="experienciaAcademicaText" class="text-gray-700 leading-relaxed" data-display-span="true">
+          Participação em projeto de pesquisa sobre inteligência artificial na Universidade ABC.
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-right">
+          <h3 class="text-2xl font-semibold mb-4 text-gray-800">Idiomas</h3>
+          <ul id="idiomasList" class="text-gray-700">
+            <span data-display-span="true" class="bg-gray-100 p-2 rounded mb-3 block">Português - Nativo</span>
+            <span data-display-span="true" class="bg-gray-100 p-2 rounded mb-3 block">Inglês - Avançado</span>
+            <span data-display-span="true" class="bg-gray-100 p-2 rounded mb-3 block">Espanhol - Intermediário</span>
+          </ul>
+          <button id="addIdiomasBtn" class="bg-blue-500 text-white px-2 py-1 rounded text-sm mt-2 hidden">Adicionar Idioma</button>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-left">
+          <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+            Participações Acadêmicas/Profissionais
+          </h3>
+          <ul id="participacoesList" class="text-gray-700">
+            <span data-display-span="true" class="bg-gray-100 p-2 rounded mb-3 block">Palestra de React - Udemy</span>
+            <span data-display-span="true" class="bg-gray-100 p-2 rounded mb-3 block">Evento Google Analytics Individual Qualification</span>
+          </ul>
+          <button id="addParticipacoesBtn" class="bg-blue-500 text-white px-2 py-1 rounded text-sm mt-2 hidden">Adicionar Participação</button>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Projetos Destacados
+        </h3>
+        <ul id="projetosDestacadosList" class="space-y-2 text-gray-700">
+            <span data-display-span="true" class="bg-gray-100 p-2 rounded">Dashboard de Vendas em React - Projeto pessoal</span>
+          <span data-display-span="true" class="bg-gray-100 p-2 rounded">Landing Page para ONG - Freelancer</span>
+        </ul>
+        <button id="addProjetosDestacadosBtn" class="bg-blue-500 text-white px-2 py-1 rounded text-sm mt-2 hidden">Adicionar Projeto</button>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Redes Profissionais
+        </h3>
+        <ul class="space-y-2 text-blue-600">
+          <li>
+            <a
+              id="linkedin"
+              href="https://linkedin.com/in/seunome"
+              target="_blank"
+              class="hover:underline"
+              >LinkedIn</a
+            >
+          </li>
+          <li>
+            <a
+              id="github"
+              href="https://github.com/seunome"
+              target="_blank"
+              class="hover:underline"
+              >GitHub</a
+            >
+          </li>
+          <li>
+            <a
+              id="portfolio"
+              href="https://seusite.com"
+              target="_blank"
+              class="hover:underline"
+              >Portfólio</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <img src="/img/mascote.png" alt="Mascote" class="mascote" id="mascote" />
+    <div id="motivational-phrase"></div>
+    <div id="chat-botao">💬</div>
+    <div id="chat-box">
+      <label for="chat-target" class="block font-bold mb-1"
+        >Conversar com:</label
+      >
+      <select id="chat-target" class="w-full mb-2 border p-1 rounded">
+        <option value="mascote">🤖 Mascote</option>
+        <option value="admin">🛡️ Equipe suporte</option>
+      </select>
+      <div
+        id="chat-mensagens"
+        class="h-32 overflow-y-auto border p-2 mb-2 rounded text-sm bg-gray-50"
+      ></div>
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Digite sua mensagem..."
+        class="w-full p-2 border rounded"
+      />
+    </div>
+
+    <script>
+      AOS.init();
+
+      // Variáveis globais (elements do DOM)
+      const editBtn = document.getElementById("edit-btn");
+      const saveBtn = document.getElementById("save-btn");
+      const uploadAvatarBtn = document.getElementById("upload-avatar-btn");
+      const avatarUpload = document.getElementById("avatar-upload");
+      const avatarImg = document.getElementById("avatar-img");
+
+      const nomeInput = document.getElementById("nome");
+      const profissaoInput = document.getElementById("profissao");
+
+      const formacaoAcademicaList = document.getElementById("formacaoAcademicaList");
+      const experienciaProfissionalList = document.getElementById("experienciaProfissionalList");
+      const areasInteresseList = document.getElementById("areasInteresseList");
+      const idiomasList = document.getElementById("idiomasList");
+      const participacoesList = document.getElementById("participacoesList");
+      const projetosDestacadosList = document.getElementById("projetosDestacadosList");
+
+      const objetivosProfissionaisText = document.getElementById("objetivosProfissionaisText");
+      const experienciaAcademicaText = document.getElementById("experienciaAcademicaText");
+
+      const linkedinLink = document.getElementById("linkedin");
+      const githubLink = document.getElementById("github");
+      const portfolioLink = document.getElementById("portfolio");
+
+      const skillsEditSection = document.getElementById("skills-edit");
+      let skillsChartInstance; // Variável para a instância do Chart.js
+
+      let currentPerfilCpf = localStorage.getItem('usuarioCpf'); 
+
+      // --- FUNÇÕES DE AJUSTE HTML/JS ---
+
+      function createEditableInput(value, type = "text", placeholder = "") {
+          const input = document.createElement(type === "textarea" ? "textarea" : "input");
+          input.type = type;
+          input.value = value;
+          // Ajustei as classes para usar os estilos que adicionei no head
+          input.className = "w-full py-1 " + (type === "textarea" ? "border p-2 rounded focus:border-blue-500" : "border-b border-transparent focus:border-blue-500");
+          input.setAttribute("data-editable-input", "true"); 
+          input.placeholder = placeholder;
+          return input;
+      }
+
+      function createDisplaySpan(value) {
+          const span = document.createElement("span");
+          span.textContent = value;
+          // Ajustei as classes para usar os estilos que adicionei no head
+          span.className = "px-3 py-1 bg-gray-100 rounded-full block"; 
+          span.setAttribute("data-display-span", "true"); 
+          return span;
+      }
+
+      function toggleEditMode(editing) {
+          // Campos principais (nome, profissao)
+          nomeInput.readOnly = !editing;
+          profissaoInput.readOnly = !editing;
+          nomeInput.classList.toggle("border", editing);
+          profissaoInput.classList.toggle("border", editing);
+          nomeInput.classList.toggle("bg-gray-100", !editing); 
+          profissaoInput.classList.toggle("bg-gray-100", !editing); 
+
+
+          // Seções de lista (Formação, Experiência, Áreas de Interesse, Idiomas, Participações, Projetos)
+          [
+              formacaoAcademicaList,
+              experienciaProfissionalList,
+              areasInteresseList,
+              idiomasList,
+              participacoesList,
+              projetosDestacadosList
+          ].forEach(listEl => {
+              if (!listEl) return; 
+              // Coleta os valores ATUAIS dos elementos antes de reconstruir
+              const currentValues = Array.from(listEl.children).map(item => {
+                  const input = item.querySelector("input[data-editable-input]");
+                  const span = item.querySelector("span[data-display-span]");
+                  if (input) return input.value.trim();
+                  if (span) return span.textContent.trim();
+                  return ""; // Fallback
+              }).filter(Boolean); // Filtra valores vazios
+
+              listEl.innerHTML = ''; // Limpa a lista
+
+              // Recria os elementos com base no modo
+              currentValues.forEach(text => {
+                  const li = document.createElement("li");
+                  if (editing) {
+                      const input = createEditableInput(text);
+                      li.appendChild(input);
+                      const removeBtn = document.createElement("button");
+                      removeBtn.textContent = "🗑️";
+                      removeBtn.className = "ml-2 text-red-500 hover:text-red-700";
+                      removeBtn.onclick = () => li.remove();
+                      li.appendChild(removeBtn);
+                  } else {
+                      li.appendChild(createDisplaySpan(text));
+                  }
+                  listEl.appendChild(li);
+              });
+              // Adicionar botão "Adicionar" para listas se estiver em modo de edição
+              const addBtnId = listEl.id.replace("List", "Btn");
+              const addBtn = document.getElementById(addBtnId);
+              if (addBtn) addBtn.style.display = editing ? "block" : "none";
+          });
+
+
+          // Textareas/Spans únicos (Objetivos, Experiência Acadêmica)
+          const textElements = [
+              { el: objetivosProfissionaisText, id: "objetivosProfissionaisText", placeholder: "Digite seus objetivos profissionais..." },
+              { el: experienciaAcademicaText, id: "experienciaAcademicaText", placeholder: "Digite sua experiência acadêmica..." }
+          ];
+
+          textElements.forEach(item => {
+              let currentText = "";
+              // Tenta pegar o valor do input/textarea se ele já foi criado, senão pega do textContent
+              const existingEl = document.getElementById(item.id);
+              if (existingEl && (existingEl.tagName === "INPUT" || existingEl.tagName === "TEXTAREA")) {
+                  currentText = existingEl.value.trim();
+              } else if (existingEl) {
+                  currentText = existingEl.textContent.trim();
+              }
+
+              if (editing) {
+                  const textarea = createEditableInput(currentText, "textarea", item.placeholder); 
+                  textarea.className = "w-full border p-2 rounded focus:border-blue-500";
+                  textarea.style.minHeight = "80px";
+                  if (existingEl) existingEl.replaceWith(textarea); // Substitui o elemento original
+                  else document.getElementById(item.id).replaceWith(textarea); // Fallback se o 'el' não for o mesmo objeto do DOM
+              } else {
+                  const span = createDisplaySpan(currentText);
+                  span.className = "text-gray-700 leading-relaxed block";
+                  if (existingEl) existingEl.replaceWith(span);
+                  else document.getElementById(item.id).replaceWith(span);
+              }
+          });
+
+
+          // Links (LinkedIn, GitHub, Portfólio)
+          const linkElements = [
+              { el: linkedinLink, id: "linkedin", placeholder: "URL do LinkedIn", text: "LinkedIn" },
+              { el: githubLink, id: "github", placeholder: "URL do GitHub", text: "GitHub" },
+              { el: portfolioLink, id: "portfolio", placeholder: "URL do Portfólio", text: "Portfólio" }
+          ];
+
+          linkElements.forEach(item => {
+              let currentHref = "";
+              // Tenta pegar o valor do input se já foi criado, senão pega do href do link
+              const existingEl = document.getElementById(item.id);
+              if (existingEl && existingEl.tagName === "INPUT") {
+                  currentHref = existingEl.value.trim();
+              } else if (existingEl && existingEl.tagName === "A") {
+                  currentHref = existingEl.href;
+              }
+
+              if (editing) {
+                  const input = createEditableInput(currentHref, "url", item.placeholder);
+                  input.setAttribute("data-link-name", item.text); // Armazenar o nome do link para reconstruir o <a>
+                  if (existingEl) existingEl.replaceWith(input);
+                  else document.getElementById(item.id).replaceWith(input);
+              } else {
+                  const a = document.createElement("a");
+                  a.href = currentHref && currentHref !== "N/A" ? currentHref : "#";
+                  a.target = "_blank";
+                  a.className = "hover:underline text-blue-600";
+                  a.textContent = item.text; // Exibe o texto padrão (LinkedIn, GitHub, Portfólio)
+                  if (existingEl) existingEl.replaceWith(a);
+                  else document.getElementById(item.id).replaceWith(a);
+              }
+          });
+
+
+          // Visibilidade dos botões
+          uploadAvatarBtn.style.display = editing ? "block" : "none";
+          saveBtn.style.display = editing ? "inline-block" : "none";
+          editBtn.style.display = editing ? "none" : "inline-block";
+
+          // Habilidades (mostra/esconde a seção de edição)
+          skillsEditSection.classList.toggle("hidden", !editing);
+          document.getElementById("addSkillBtn").style.display = editing ? "block" : "none";
+
+          // Atualiza o gráfico se estiver saindo do modo de edição
+          if (!editing) {
+              updateChartFromInputs();
+          }
+      }
+
+      // --- FUNÇÕES DE GRÁFICO E HABILIDADES ---
+      const ctx = document.getElementById("skillsChart").getContext("2d");
+      function createOrUpdateChart(labels, values) {
+          if (skillsChartInstance) {
+              skillsChartInstance.data.labels = labels;
+              skillsChartInstance.data.datasets[0].data = values;
+              skillsChartInstance.update();
+          } else {
+              skillsChartInstance = new Chart(ctx, {
+                  type: "bar",
+                  data: {
+                      labels: labels,
+                      datasets: [
+                          {
+                              label: "Nível de Proficiência (%)",
+                              data: values,
+                              backgroundColor: [
+                                  "rgba(59, 130, 246, 0.7)", 
+                                  "rgba(234, 179, 8, 0.7)",  
+                                  "rgba(79, 70, 229, 0.7)",  
+                                  "rgba(34, 197, 94, 0.7)",  
+                                  "rgba(239, 68, 68, 0.7)",  
+                                  "rgba(168, 85, 247, 0.7)", 
+                                  "rgba(251, 191, 36, 0.7)"  
+                              ],
+                              borderRadius: 5,
+                          },
+                      ],
+                  },
+                  options: {
+                      responsive: true,
+                      scales: {
+                          y: { beginAtZero: true, max: 100, ticks: { stepSize: 10 } },
+                      },
+                      plugins: { legend: { display: false } },
+                  },
+              });
+          }
+      }
+
+      function addSkillInput(name = "", value = 0) {
+          const div = document.createElement("div");
+          div.className = "flex space-x-2";
+          div.innerHTML = `
+              <input type="text" class="skill-name border p-1 rounded w-1/2" value="${name}" placeholder="Habilidade" data-editable-input="true"/>
+              <input type="number" class="skill-value border p-1 rounded w-1/2" value="${value}" min="0" max="100" data-editable-input="true"/>
+              <button type="button" class="remove-skill-btn text-red-500 hover:text-red-700">X</button>
+          `;
+          skillsEditSection.appendChild(div);
+          div.querySelector(".remove-skill-btn").onclick = () => div.remove();
+      }
+
+      function updateChartFromInputs() {
+          const skillNameInputs = document.querySelectorAll("#skills-edit .skill-name");
+          const skillValueInputs = document.querySelectorAll("#skills-edit .skill-value");
+
+          const labels = Array.from(skillNameInputs).map((input) => input.value);
+          const values = Array.from(skillValueInputs).map((input) => Number(input.value));
+
+          createOrUpdateChart(labels, values);
+      }
+
+      document.getElementById("addSkillBtn").addEventListener("click", () => addSkillInput("", 0));
+
+
+      // --- CARREGAR E SALVAR PERFIL (COMUNICAÇÃO COM O BACK-END) ---
+
+      async function loadPerfilData() {
+          if (!currentPerfilCpf) {
+              console.warn("CPF do usuário não encontrado. Redirecionando para login.");
+              window.location.href = "/login"; 
+              return;
+          }
+
+          try {
+              const response = await fetch("/perfil/dados"); 
+              if (!response.ok) {
+                  if (response.status === 401) {
+                      alert("Sessão expirada ou usuário não autorizado. Por favor, faça login novamente.");
+                      window.location.href = "/login";
+                      return;
+                  }
+                  throw new Error(`Erro ao carregar perfil: ${response.statusText}`);
+              }
+              const data = await response.json();
+
+              if (data.sucesso && data.perfil) {
+                  const perfil = data.perfil;
+                  console.log("Perfil carregado:", perfil);
+
+                  nomeInput.value = perfil.nome || "";
+                  profissaoInput.value = perfil.profissao || "";
+
+                  function populateList(listElement, dataArray) {
+                      listElement.innerHTML = "";
+                      if (dataArray && Array.isArray(dataArray)) {
+                          dataArray.forEach(item => {
+                              const li = document.createElement("li");
+                              li.appendChild(createDisplaySpan(item)); 
+                              listElement.appendChild(li);
+                          });
+                      }
+                  }
+                  populateList(formacaoAcademicaList, perfil.formacaoAcademica);
+                  populateList(experienciaProfissionalList, perfil.experienciaProfissional);
+                  populateList(areasInteresseList, perfil.areasInteresse);
+                  populateList(idiomasList, perfil.idiomas);
+                  populateList(participacoesList, perfil.participacoes);
+                  populateList(projetosDestacadosList, perfil.projetosDestacados);
+
+                  if (objetivosProfissionaisText) objetivosProfissionaisText.textContent = perfil.objetivosProfissionais || "";
+                  if (experienciaAcademicaText) experienciaAcademicaText.textContent = perfil.experienciaAcademica || "";
+
+                  // Preencher links (como links de exibição)
+                  if (linkedinLink) {
+                      if (perfil.linkedin) { linkedinLink.href = perfil.linkedin; linkedinLink.textContent = "LinkedIn"; } else { linkedinLink.href = "#"; linkedinLink.textContent = "N/A"; }
+                  }
+                  if (githubLink) {
+                      if (perfil.github) { githubLink.href = perfil.github; githubLink.textContent = "GitHub"; } else { githubLink.href = "#"; githubLink.textContent = "N/A"; }
+                  }
+                  if (portfolioLink) {
+                      if (perfil.portfolio) { portfolioLink.href = perfil.portfolio; portfolioLink.textContent = "Portfólio"; } else { portfolioLink.href = "#"; portfolioLink.textContent = "N/A"; }
+                  }
+
+                  // Preencher Habilidades e atualizar gráfico
+                  if (perfil.habilidades && Object.keys(perfil.habilidades).length > 0) {
+                      const skillLabels = Object.keys(perfil.habilidades);
+                      const skillValues = Object.values(perfil.habilidades);
+
+                      createOrUpdateChart(skillLabels, skillValues);
+
+                      skillsEditSection.innerHTML = ""; 
+                      skillLabels.forEach((name, index) => {
+                          addSkillInput(name, skillValues[index]);
+                      });
+                  } else {
+                      createOrUpdateChart([], []); // Limpa o gráfico
+                      skillsEditSection.innerHTML = "";
+                      addSkillInput("Habilidade 1", 0); 
+                  }
+
+                  const savedAvatar = localStorage.getItem('perfilAvatar');
+                  if (savedAvatar) {
+                      avatarImg.src = savedAvatar;
+                  }
+
+              } else {
+                  alert(data.erro || "Não foi possível carregar os dados do perfil.");
+              }
+          } catch (error) {
+              console.error("Erro ao carregar os dados do perfil:", error);
+              alert("Erro ao carregar os dados do perfil. Verifique a conexão com o servidor.");
+          }
+      }
+
+      async function savePerfilData() {
+    if (!currentPerfilCpf) {
+        alert("Erro: CPF do usuário não identificado para salvar o perfil.");
+        return; // Retorna aqui se não houver CPF
+    }
+
+    // Coleta de dados das listas (agora dos inputs gerados no modo de edição)
+    function getListItems(listElement) {
+        // Certifique-se de que a query seleciona APENAS os inputs dentro dos <li> do listElement
+        return Array.from(listElement.querySelectorAll("li input[data-editable-input]")).map(input => input.value.trim()).filter(Boolean);
+    }
+
+    // Garante que os elementos textarea/input existem antes de tentar pegar o .value
+    const objetivosProfissionaisEl = document.getElementById("objetivosProfissionaisText");
+    const experienciaAcademicaEl = document.getElementById("experienciaAcademicaText");
+    const linkedinEl = document.getElementById("linkedin");
+    const githubEl = document.getElementById("github");
+    const portfolioEl = document.getElementById("portfolio");
+
+    const updatedPerfil = {
+        cpf: currentPerfilCpf,
+        nome: nomeInput.value.trim(),
+        profissao: profissaoInput.value.trim(),
+        formacaoAcademica: getListItems(formacaoAcademicaList),
+        experienciaProfissional: getListItems(experienciaProfissionalList),
+        areasInteresse: getListItems(areasInteresseList),
+        idiomas: getListItems(idiomasList),
+        participacoes: getListItems(participacoesList),
+        projetosDestacados: getListItems(projetosDestacadosList),
+        objetivosProfissionais: objetivosProfissionaisEl ? objetivosProfissionaisEl.value.trim() : "",
+        experienciaAcademica: experienciaAcademicaEl ? experienciaAcademicaEl.value.trim() : "",
+        linkedin: linkedinEl ? linkedinEl.value.trim() : "",
+        github: githubEl ? githubEl.value.trim() : "",
+        portfolio: portfolioEl ? portfolioEl.value.trim() : ""
+    };
+
+    // Coletar dados das habilidades
+    const habilidadesMap = {};
+    document.querySelectorAll("#skills-edit > div").forEach(skillDiv => {
+        const nameInput = skillDiv.querySelector(".skill-name");
+        const valueInput = skillDiv.querySelector(".skill-value");
+        if (nameInput && valueInput && nameInput.value.trim()) {
+            habilidadesMap[nameInput.value.trim()] = Number(valueInput.value);
+        }
+    });
+    updatedPerfil.habilidades = habilidadesMap;
+
+    console.log("Dados do perfil a serem enviados:", updatedPerfil);
+
+    try {
+        const response = await fetch("/perfil/salvar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updatedPerfil)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`Erro do servidor: ${errorData.mensagem || response.statusText}`);
+        }
+
+        const data = await response.json();
+        if (data.sucesso) {
+            alert(data.mensagem);
+            await loadPerfilData(); // Recarregar os dados para atualizar a UI
+            toggleEditMode(false); // **SAIR DO MODO DE EDIÇÃO SOMENTE SE BEM-SUCEDIDO**
+        } else {
+            alert(data.mensagem || "Erro desconhecido ao salvar perfil.");
+        }
+    } catch (error) {
+        console.error("Erro ao tentar salvar perfil:", error);
+        alert(`Erro ao tentar salvar perfil: ${error.message}. Verifique a conexão com o servidor.`);
+    }
+}
+
+      // --- EVENT LISTENERS ---
+      editBtn.addEventListener("click", () => toggleEditMode(true));
+      saveBtn.addEventListener("click", async () => {
+          await savePerfilData(); // tenta salvar os dados
+          toggleEditMode(false); // sai do modo de edição após salvar
+      });
+
+      uploadAvatarBtn.addEventListener("click", () => avatarUpload.click());
+      avatarUpload.addEventListener("change", (e) => {
+          const file = e.target.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                  avatarImg.src = e.target.result;
+                  localStorage.setItem('perfilAvatar', e.target.result); // salva o avatar no localStorage
+              };
+              reader.readAsDataURL(file);
+          }
+      });
+
+      // chamada inicial para carregar os dados do perfil quando a pagina e carregada
+      window.addEventListener("DOMContentLoaded", loadPerfilData);
+
+
+      // --- LÓGICA DO MASCOTE E CHAT (Ajuda a gente a se organizar) ---
+      const phrases = [
+          "Oi sou o mascote da BTA, me chamo Geni de Genius para representar nós dois",
+          "Que bom te ver denovo, já é de casa né",
+          "Fique de olho nas novidades!",
+          "Já viu os novos eventos por ai? tudo nota 10!",
+          "Dando uma olhada por ai né, só tem qualidade massa aqui!",
+          "Cada vez  mais perto do sucesso!",
+          "Nunca desista de ir mais longe!",
+          "Você está indo muito bem!",
+          "Continue se esforçando!",
+          "Cada passo conta!",
+          "Seu talento é único!",
+          "Acredite no seu potencial!",
+      ];
+      const phraseEl = document.getElementById("motivational-phrase");
+      let phraseIndex = 0;
+      function showPhrase() {
+          phraseEl.textContent = phrases[phraseIndex];
+          phraseEl.classList.add("show");
+          setTimeout(() => {
+              phraseEl.classList.remove("show");
+              phraseIndex = (phraseIndex + 1) % phrases.length;
+              setTimeout(showPhrase, 1000);
+          }, 9000);
+      }
+      showPhrase();
+
+      document.getElementById("chat-botao").addEventListener("click", () => {
+          const chat = document.getElementById("chat-box");
+          chat.style.display = chat.style.display === "block" ? "none" : "block";
+      });
+      const chatBox = document.getElementById("chat-box");
+      const chatMensagens = document.getElementById("chat-mensagens");
+      const chatInput = document.getElementById("chat-input");
+      const chatTarget = document.getElementById("chat-target");
+      chatTarget.addEventListener("change", () => {
+          chatMensagens.innerHTML = "";
+      });
+
+      const respostasMascote = [
+          "Olá!Estou aqui para ajudar!",
+          "Você já conferiu suas habilidades?",
+          "Vamos encontrar a melhor vaga para você.",
+          "Se não conseguimos resolver entre diretamente em contato com a equipe de suporte (...)!",
+      ];
+
+      chatInput.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+              const msg = chatInput.value.trim();
+              if (!msg) return;
+              const destino = chatTarget.value;
+
+              chatMensagens.innerHTML += `<div><strong>Você:</strong> ${msg}</div>`;
+
+              if (destino === "mascote") {
+                  const resposta =
+                      respostasMascote[
+                          Math.floor(Math.random() * respostasMascote.length)
+                      ];
+                  setTimeout(() => {
+                      chatMensagens.innerHTML += `<div><strong>Mascote:</strong> ${resposta}</div>`;
+                      chatMensagens.scrollTop = chatMensagens.scrollHeight;
+                  }, 1000);
+              } else {
+                  setTimeout(() => {
+                      chatMensagens.innerHTML += `<div><strong>${destino}:</strong> (resposta simulada)</div>`;
+                      chatMensagens.scrollTop = chatMensagens.scrollHeight;
+                  }, 1000);
+              }
+
+              chatInput.value = "";
+              chatMensagens.scrollTop = chatMensagens.scrollHeight;
+          }
+      });
+      function mostrarNotificacao(mensagem, duracao = 4000) {
+          const container = document.getElementById("notificacoes-container");
+          const notif = document.createElement("div");
+          notif.className = "notificacao";
+          notif.textContent = mensagem;
+          container.appendChild(notif);
+
+          setTimeout(() => notif.classList.add("show"), 50);
+
+          setTimeout(() => {
+              notif.classList.remove("show");
+              setTimeout(() => notif.remove(), 500);
+          }, duracao);
+      }
+
+      window.addEventListener("load", () => {
+          const vagas = document.querySelectorAll("#vagas-lista input");
+          vagas.forEach((vaga, index) => {
+              setTimeout(() => {
+                  mostrarNotificacao(vaga.value);
+              }, index * 1500);
+          });
+      });
+
+      // função para adicionar novos itens em listas (Formação, Experiência etc.)
+      function addListItem(listElement, placeholder = "Novo item") {
+          const li = document.createElement("li");
+          const input = createEditableInput("", "text", placeholder);
+          li.appendChild(input);
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "🗑️";
+          removeBtn.className = "ml-2 text-red-500 hover:text-red-700";
+          removeBtn.onclick = () => li.remove();
+          li.appendChild(removeBtn);
+          listElement.appendChild(li);
+          input.focus(); 
+      }
+
+      document.getElementById("addFormacaoBtn").addEventListener("click", () => addListItem(formacaoAcademicaList, "Nova formação"));
+      document.getElementById("addExperienciaBtn").addEventListener("click", () => addListItem(experienciaProfissionalList, "Nova experiência"));
+      document.getElementById("addAreasInteresseBtn").addEventListener("click", () => addListItem(areasInteresseList, "Nova área de interesse"));
+      document.getElementById("addIdiomasBtn").addEventListener("click", () => addListItem(idiomasList, "Novo idioma"));
+      document.getElementById("addParticipacoesBtn").addEventListener("click", () => addListItem(participacoesList, "Nova participação"));
+      document.getElementById("addProjetosDestacadosBtn").addEventListener("click", () => addListItem(projetosDestacadosList, "Novo projeto"));
+
+    </script>
+  </body>
+</html>
