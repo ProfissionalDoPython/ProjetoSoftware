@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banco de Talentos - UEG</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+  </head>
+  <body>
+    <header class="topo">
+      <div class="logo-ueg">
+        <img th:src="@{/img/LogoUEGbranco.png}" alt="Logo UEG" />
+      </div>
+      <nav class="menu">
+        <a href="#">HOME</a>
+        <a href="#">TRANSPARÊNCIA</a>
+        <a href="#">PERFIL</a>
+        <a href="#">FALE CONOSCO</a>
+        <a href="#">VISITE A UEG</a>
+      </nav>
+      <div class="acoes">
+        <span class="ajuste-fonte">A+ A A-</span>
+        <button class="btn cor1">C</button>
+        <button class="btn cor2">C</button>
+        <button class="btn cor3">C</button>
+        <button class="btn cor4">VLibras</button>
+        <div class="acesso-info">
+          <img
+            th:src="@{/img/LogoInfo.png}"
+            alt="Acesso à Informação"
+          />
+          <span>Acesso à Informação</span>
+        </div>
+        <img
+          th:src="@{/img/LogoGoias.png}"
+          alt="Governo de Goiás"
+          class="logo-go"
+        />
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="overlay">
+        <h1>
+          O Caminho Para o Sucesso <br />
+          Começa Aqui!
+        </h1>
+        <p>
+          Com o objetivo de fortalecer a conexão entre a academia e o mercado, a
+          Universidade Estadual de Goiás (UEG) apresenta o Banco de Talentos. A
+          plataforma foi criada para centralizar e divulgar as melhores
+          oportunidades de estágio, bolsas, projetos de pesquisa e vagas de
+          emprego, servindo como uma ponte essencial entre nossos alunos,
+          egressos, pesquisadores e o ecossistema de inovação. Participe e
+          contribua para o desenvolvimento profissional e científico em Goiás.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-container">
+        <div class="cta-texto">
+          <h2>
+            Tenha acesso a todos os tipos de oportunidade.
+            <br />
+            <span>De maneira rápida e prática!</span>
+          </h2>
+          <p>
+            Explore e desenvolva os seus talentos com o Banco de Talentos da
+            UEG.
+          </p>
+          <div class="cta-pills">
+            <span
+              >Vagas para todos os perfis. Milhares de oportunidades esperando
+              por você.</span
+            >
+            <span>Plataforma institucional de uso fácil e rápido.</span>
+            <span
+              >Eventos e estágios disponíveis para você estar sempre dois passos
+              à frente.</span
+            >
+          </div>
+          <div class="cta-p">
+            <span>A hora de se inscrever é agora!</span>
+          </div>
+          <button class="btn-inscricao">Acessar Inscrições</button>
+        </div>
+
+        <div class="cta-imagem">
+          <img
+            th:src="@{/img/mulher.jpeg}"
+            alt="Mulher estudando no notebook"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="oportunidades">
+      <div class="oportunidades-topo">
+        <h2>OPORTUNIDADES EM DESTAQUE</h2>
+        <a href="#">ver todos</a>
+      </div>
+      <div class="carrossel">
+        <button class="prev">◀</button>
+        <div class="cards">
+          <div class="card">
+            <div class="card-img">Sem Imagem</div>
+            <p>Texto..</p>
+            <ul>
+              <li>>></li>
+              <li>>></li>
+              <li>>></li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-img">Sem Imagem</div>
+            <p>Texto..</p>
+            <ul>
+              <li>>></li>
+              <li>>></li>
+              <li>>></li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-img">Sem Imagem</div>
+            <p>Texto..</p>
+            <ul>
+              <li>>></li>
+              <li>>></li>
+              <li>>></li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-img">Sem Imagem</div>
+            <p>Texto..</p>
+            <ul>
+              <li>>></li>
+              <li>>></li>
+              <li>>></li>
+            </ul>
+          </div>
+        </div>
+        <button class="next">▶</button>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>INSTITUCIONAL</h3>
+          <ul>
+            <li><a href="#">DGI</a></li>
+            <li><a href="#">Núcleo de Seleção</a></li>
+            <li><a href="#">Avaliação Institucional</a></li>
+            <li><a href="#">Relações Externas</a></li>
+            <li><a href="#">Convênios</a></li>
+            <li><a href="#">Agência de Inovação</a></li>
+            <li><a href="#">CEAR</a></li>
+            <li><a href="#">Fundações</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>SERVIÇOS</h3>
+          <ul>
+            <li><a href="#">Webmail</a></li>
+            <li><a href="#">Boletos de Serviços</a></li>
+            <li><a href="#">Consulta de processos</a></li>
+            <li><a href="#">Contratos</a></li>
+            <li><a href="#">Chamamento Público</a></li>
+            <li><a href="#">Licitação</a></li>
+            <li><a href="#">Anais de eventos</a></li>
+            <li><a href="#">Certificados</a></li>
+            <li><a href="#">Editais</a></li>
+            <li><a href="#">SAFF</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>COMUNICAÇÃO</h3>
+          <ul>
+            <li><a href="#">Ouvidoria</a></li>
+            <li><a href="#">e-SIC</a></li>
+            <li><a href="#">Acesso a informação</a></li>
+            <li><a href="#">Rádio UEG Educativa</a></li>
+            <li><a href="#">UEG TV</a></li>
+            <li><a href="#">Comunicação Setorial</a></li>
+            <li><a href="#">Lista telefônica</a></li>
+            <li><a href="#">Agenda de Autoridades</a></li>
+            <li><a href="#">Publicações</a></li>
+            <li><a href="#">Fale conosco</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col redes">
+          <h3>NOS ACOMPANHE</h3>
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/" class="facebook"
+                ><img
+                  th:src="@{/img/Facebook.png}"
+                  alt="Facebook"
+                />
+                Facebook</a
+              >
+            </li>
+            <li>
+              <a href="https://www.flickr.com/" class="flickr"
+                ><img
+                  th:src="@{/img/Flickr.png}"
+                  alt="Flickr"
+                />
+                Flickr</a
+              >
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" class="youtube"
+                ><img
+                  th:src="@{/img/YouTube.png}"
+                  alt="YouTube"
+                />
+                YouTube</a
+              >
+            </li>
+            <li>
+              <a href="https://www.instagram.com/" class="instagram"
+                ><img
+                  th:src="@{/img/Instagram.png}"
+                  alt="Instagram"
+                />
+                Instagram</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copy">
+        Universidade Estadual de Goiás. Todos os direitos reservados.
+      </div>
+    </footer>
+    <script th:src="@{/js/script.js}"></script>
+  </body>
+</html>

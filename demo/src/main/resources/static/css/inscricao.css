@@ -1,0 +1,166 @@
+/* Seu CSS personalizado para a página de inscrição */
+
+/* Base body styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  /* Fundo gradiente do seu HTML original */
+  background-image: linear-gradient(to bottom right, #dbf4e5, #e0e0e0);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Container principal do formulário */
+.w-full.max-w-2xl.bg-white.p-8.rounded-2xl.shadow-xl.border.border-green-200 {
+  /* Estas classes Tailwind já definem muito, mas podemos adicionar mais aqui se necessário */
+  animation: fadeIn 0.3s ease-out forwards; /* Animação de entrada */
+}
+
+/* Formulário e seus elementos */
+#form-inscricao.space-y-6 {
+  /* Classes Tailwind para espaçamento */
+  animation: fadeIn 0.3s ease-in; /* Animação de entrada */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  /* Estilos para campos de texto e textarea */
+  /* As classes Tailwind já dão um bom visual, mas ajuste aqui se quiser sobrescrever */
+  padding: 0.75rem; /* p-3 */
+  border-width: 1px; /* border */
+  border-color: #d1d5db; /* border-gray-300 */
+  border-radius: 0.5rem; /* rounded-lg */
+  width: 100%;
+  transition: all 0.15s ease-in-out; /* transition */
+}
+
+input[type="file"] {
+  padding: 0.25rem; /* p-1 */
+  border-width: 1px;
+  border-color: #d1d5db;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #10b981; /* focus:ring-green-500, focus:outline-none */
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5); /* focus:ring-2 */
+}
+
+/* Botão de Envio */
+button[type="submit"] {
+  background-color: #10b981; /* bg-green-600 */
+  color: white; /* text-white */
+  font-weight: bold; /* font-bold */
+  padding: 0.75rem 2rem; /* px-8 py-3 */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: background-color 0.15s ease-in-out; /* transition */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem; /* gap-3 */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+}
+
+button[type="submit"]:hover {
+  background-color: #059669; /* hover:bg-green-700 */
+}
+
+#modal-sucesso-conteudo {
+  /* Tailwind já cuida de bg-white, rounded-xl, p-8, max-w-md, w-full, shadow-lg, text-center */
+  animation: fadeIn 0.3s ease-out forwards; /* Animação de entrada do modal */
+}
+
+#modal-sucesso-conteudo.fade-out {
+  animation: fadeOut 0.3s forwards; /* Animação de saída do modal */
+}
+
+/* Keyframes para animações */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.9); }
+}
+
+/* --- Dark Mode Styles --- */
+/* Você não tinha variáveis de dark mode para esta página, então vou adicionar algumas com base no seu padrão. */
+/* É ideal usar um sistema de variáveis mais robusto se quiser dark mode completo aqui. */
+body.dark-mode {
+  background-image: linear-gradient(to bottom right, #2a2a2a, #1a1a1a);
+  color: #e0e0e0;
+}
+
+body.dark-mode .w-full.max-w-2xl.bg-white {
+  background-color: #333;
+  border-color: #444;
+}
+
+body.dark-mode label,
+body.dark-mode h1,
+body.dark-mode h3 {
+  color: #e0e0e0;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="tel"],
+body.dark-mode textarea,
+body.dark-mode input[type="file"] {
+  background-color: #444;
+  border-color: #555;
+  color: #e0e0e0;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus {
+  border-color: #4caf50; /* Um verde escuro */
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
+}
+
+body.dark-mode p.text-red-600 {
+  color: #ef4444; /* Um vermelho mais claro para dark mode */
+}
+
+body.dark-mode button.flex.items-center.gap-2.text-green-600 {
+  color: #4caf50; /* Um verde escuro para o botão voltar */
+}
+
+body.dark-mode button.flex.items-center.gap-2.text-green-600:hover {
+  color: #81c784; /* Um verde mais claro no hover */
+}
+
+body.dark-mode .flex.items-center.justify-center.gap-3.mb-6.text-green-700 {
+  color: #81c784; /* Cor para o título principal em dark mode */
+}
+
+body.dark-mode button[type="submit"] {
+  background-color: #4caf50; /* Verde escuro para o botão enviar */
+}
+
+body.dark-mode button[type="submit"]:hover {
+  background-color: #388e3c; /* Verde mais escuro no hover */
+}
+
+body.dark-mode #modal-sucesso-conteudo {
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode #modal-sucesso h3 {
+  color: #4caf50;
+}
+
+body.dark-mode #modal-sucesso p {
+  color: #e0e0e0;
+}

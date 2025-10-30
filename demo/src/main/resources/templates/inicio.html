@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banco de Talentos Acadêmicos</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+
+      body {
+        background-color: #f9f9f9;
+        color: #333;
+      }
+
+      .top-bar {
+        background: #fff;
+        padding: 0.5rem 2rem;
+        display: flex;
+        justify-content: flex-end;
+        border-bottom: 1px solid #ddd;
+        font-size: 0.9rem;
+      }
+
+      .top-bar a {
+        margin-left: 1.5rem;
+        color: #003366;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      header {
+        background: #fff;
+        padding: 1rem 2rem;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+      }
+
+      header img {
+        height: 60px;
+        margin: 0 1rem;
+        vertical-align: middle;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        margin-top: 0.5rem;
+        color: #003366;
+      }
+
+      nav {
+        background: #003366;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      nav {
+        background: #eee;
+        padding: 1rem;
+        text-align: center;
+      }
+      nav a {
+        margin: 0 1rem;
+        text-decoration: none;
+        color: #003366;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+      }
+      nav a:hover {
+        background: #ddd;
+        border-radius: 5px;
+      }
+      .main-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+        gap: 2rem;
+      }
+
+      .content {
+        flex: 3;
+      }
+
+      .sidebar {
+        flex: 1;
+        background: #fff;
+        padding: 1.5rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .sidebar h3 {
+        margin-bottom: 1rem;
+        color: #003366;
+      }
+
+      .section {
+        display: none;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      .section h2 {
+        margin-bottom: 1rem;
+        color: #003366;
+        font-size: 1.5rem;
+      }
+
+      .section p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      .section img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      button {
+        background-color: #003366;
+        color: #fff;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background-color: #ffa500;
+        color: #003366;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-content {
+          flex-direction: column;
+          padding: 0 1rem;
+        }
+
+        nav a {
+          display: inline-block;
+          margin: 0.25rem 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-bar">
+      <a href="#">Suporte</a>
+      <a href="#">E-mail</a>
+    </div>
+
+    <header>
+      <img src="/img/logo_ueg.png" alt="Logotipo da UEG" />
+      <img src="/img/bancos.png" alt="Logo do Banco de Talentos" />
+      <h1>Banco de Talentos Acadêmicos</h1>
+    </header>
+
+    <nav>
+      <a onclick="showSection('inicio', this)" class="active">Início</a>
+      <a onclick="showSection('conheca', this)">Conheça</a>
+      <a onclick="showSection('acesso', this)">Acesso</a>
+      <a onclick="showSection('contato', this)">Contato</a>
+    </nav>
+
+    <main class="main-content">
+      <div class="content">
+        <section class="section active" id="inicio">
+          <h2>Bem-vindo ao Banco de Talentos!</h2>
+          <img
+            src="/img/Banco de Talentos Acadêmicos.png"
+            alt="Imagem Banco de Talentos"
+          />
+        </section>
+
+        <section class="section" id="conheca">
+          <h2>Conheça o Banco de Talentos</h2>
+          <p><strong>Oportunidade de trabalho aliado ao estudo!</strong></p>
+          <p>
+            O Banco de Talentos é uma ponte essencial entre você, acadêmico, e o
+            mercado de trabalho. Ele foi criado para revelar suas competências,
+            habilidades e potencial, conectando você às melhores oportunidades
+            de estágio, trainee e emprego.
+          </p>
+          <p><strong>Por que participar?</strong></p>
+          <p>
+            Participar significa estar à frente, mostrando seu talento para
+            empresas que buscam profissionais jovens, inovadores e preparados
+            para os desafios do mundo corporativo.
+          </p>
+          <p>
+            <strong>Para empresas:</strong> divulgamos suas vagas e filtramos os
+            melhores talentos para sua organização.
+          </p>
+          <p><strong>Oportunidades ilimitas</strong></p>
+          <ul>
+            <li>📌 Acesso a empresas que valorizam o talento jovem</li>
+            <li>📌 Desenvolvimento profissional com experiências reais</li>
+            <li>📌 Visibilidade para o seu currículo</li>
+          </ul>
+        </section>
+
+        <section class="section" id="acesso">
+          <h2>Acesso ao Sistema</h2>
+          <p>
+            Cadastre-se gratuitamente no sistema e aproveite oportunidades
+            exclusivas!
+          </p>
+          <button
+            onclick="window.location.href='/login'"
+          >
+            Acessar o sistema
+          </button>
+          <br /><br />
+          <h2>
+            O lugar certo para conectar estudantes a oportunidades reais de
+            desenvolvimento profissional.
+          </h2>
+        </section>
+
+        <section class="section" id="contato">
+          <h2>Contato</h2>
+          <p><strong>Telefone:</strong> (00) 0000-0000</p>
+          <p><strong>Email:</strong> talentos@gmail.br</p>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <h3>Últimas Notícias</h3>
+        <p>🌟 Banco de Talentos em funcionamento!</p>
+        <p>🚀 Cadastre-se e conecte-se com seu futuro profissional.</p>
+      </aside>
+    </main>
+
+    <script>
+      function showSection(id, element) {
+        document.querySelectorAll(".section").forEach((section) => {
+          section.classList.remove("active");
+        });
+        document.getElementById(id).classList.add("active");
+
+        document.querySelectorAll("nav a").forEach((link) => {
+          link.classList.remove("active");
+        });
+        element.classList.add("active");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banco de Talentos - Login</title>
+  <link rel="stylesheet" th:href="@{/css/login.css}" />
+</head>
+
+<body>
+  <div class="login-container">
+    <img th:src="@{/img/logoueg.png}" alt="Logo UEG" class="logo-ueg" />
+
+    <form class="form-box" th:action="@{/login}" method="post">
+
+      <div th:if="${error}"
+        style="color: #ffbaba; background-color: #d84a4a; 
+        padding: 10px; border-radius: 5px; margin-bottom: 
+        15px; text-align: center;">
+        <p th:text="${error}" style="margin: 0;"></p>
+      </div>
+
+      <label for="email">E-mail ou CPF:</label>
+      <input type="text" id="email" name="email" placeholder="E-mail ou CPF" required />
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="password" placeholder="Senha" required />
+
+      <button class="btn-confirmar" type="submit">Confirmar</button>
+
+      <div class="links">
+        <a th:href="@{/cadastro}">Cadastrar Usuário</a> |
+        <a th:href="@{/recuperar-senha}">Recuperar Senha</a>
+      </div>
+
+      <button class="btn-gov">Entrar com gov.br</button>
+
+      <button class="btn-google">
+        <img th:src="@{/img/google.png}" alt="Google" />
+        Fazer Login com Google
+      </button>
+
+      <div class="footer-links">
+        <a href="#">Acessar o Portal da UEG</a>
+        <a href="#">Boletos de Serviços</a>
+        <a href="#">Consulta Pagamento de Boletos</a>
+      </div>
+
+      <div class="logo-talentos">
+        <img th:src="@{/img/banco.png}" alt="Banco de Talentos" />
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

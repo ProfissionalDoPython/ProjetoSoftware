@@ -1,0 +1,422 @@
+/* Basic Variables for Light Mode */
+:root {
+  /* Background colors */
+  --bg-color-light-start: #f0fdf4; /* green-50 from body gradient */
+  --bg-color-light-end: #f5f5f5;   /* gray-100 from body gradient */
+
+  /* Text colors */
+  --text-color-default: #333;       /* Default text color */
+  --text-color-header: #1a1a1a;     /* Deeper green for main headers */
+
+  /* Main content area background & border */
+  --main-content-bg: white;
+  --main-content-border: #a7f3d0; /* green-200 */
+
+  /* Modal background & border */
+  --modal-bg: white;
+  --modal-border: #d1fae5; /* green-300 */
+
+  /* Primary action button colors (e.g., green buttons) */
+  --primary-btn-bg: #10b981;    /* green-600 */
+  --primary-btn-hover-bg: #059669; /* green-700 */
+  --primary-btn-text: white;
+
+  /* Secondary action button colors (e.g., gray buttons) */
+  --secondary-btn-bg: #e5e7eb;  /* gray-300 */
+  --secondary-btn-hover-bg: #d1d5db; /* gray-400 */
+  --secondary-btn-text: #333; /* Default text color for secondary buttons */
+
+  /* Red action button colors (e.g., delete/sair) */
+  --red-btn-bg: #dc2626;      /* red-600 */
+  --red-btn-hover-bg: #b91c1c; /* red-800 */
+  --red-btn-text: white;
+
+  /* Blue action button colors (e.g., export) */
+  --blue-btn-bg: #2563eb;     /* blue-700 */
+  --blue-btn-hover-bg: #1d4ed8; /* blue-800 */
+  --blue-btn-text: white;
+
+  /* Input field colors */
+  --input-border: #a7f3d0;   /* green-400 */
+  --input-placeholder: #34d399; /* green-500 */
+
+  /* Table colors */
+  --table-header-bg: #bbf7d0;  /* green-200 */
+  --table-header-text: #047857; /* green-900 */
+  --table-row-border: #a7f3d0; /* green-300 */
+  --table-row-hover: #d1fae5;  /* green-50 */
+  --table-text-muted: #9ca3af; /* gray-400 for N/A, italic */
+
+  /* Error text */
+  --error-text: #b91c1c; /* red-700 */
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+  --bg-color-light-start: #282828; /* Dark gray background start */
+  --bg-color-light-end: #383838;   /* Dark gray background end */
+
+  --text-color-default: #e0e0e0;     /* Light gray default text */
+  --text-color-header: #f5f5f5;     /* White/light gray for main headers */
+
+  --main-content-bg: #3a3a3a;      /* Medium dark gray content background */
+  --main-content-border: #505050; /* Slightly lighter border */
+
+  --modal-bg: #4a4a4a;            /* Slightly lighter modal background */
+  --modal-border: #606060;        /* Light gray border for modals */
+
+  --primary-btn-bg: #66bb6a;    /* Green for primary buttons */
+  --primary-btn-hover-bg: #4caf50; /* Darker green on hover */
+  --primary-btn-text: white;
+
+  --secondary-btn-bg: #616161;  /* Darker gray for secondary buttons */
+  --secondary-btn-hover-bg: #757575; /* Lighter gray on hover */
+  --secondary-btn-text: #e0e0e0;
+
+  --red-btn-bg: #ef5350;      /* Lighter red for dark mode delete/sair */
+  --red-btn-hover-bg: #d32f2f; /* Darker red on hover */
+  --red-btn-text: white;
+
+  --blue-btn-bg: #42a5f5;     /* Lighter blue for dark mode export */
+  --blue-btn-hover-bg: #2196f3; /* Darker blue on hover */
+  --blue-btn-text: white;
+
+  --input-border: #808080;   /* Gray input border */
+  --input-placeholder: #a0a0a0; /* Lighter gray placeholder */
+
+  --table-header-bg: #505050;  /* Darker table header */
+  --table-header-text: #f5f5f5; /* White/light gray header text */
+  --table-row-border: #606060; /* Gray table row border */
+  --table-row-hover: #4a4a4a;  /* Darker row on hover */
+  --table-text-muted: #a0a0a0; /* Muted gray for N/A in dark mode */
+
+  --error-text: #ff8a80; /* Light red for error text */
+}
+
+
+/* Basic Body Styles */
+body {
+  background: linear-gradient(to right, var(--bg-color-light-start), var(--bg-color-light-end));
+  min-height: 100vh;
+  font-family: sans-serif;
+  color: var(--text-color-default);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Re-added for theme toggle smoothness */
+}
+
+/* Dark Mode Body Styling */
+body.dark-mode {
+  background: linear-gradient(to right, var(--bg-color-light-start), var(--bg-color-light-end));
+  color: var(--text-color-default); 
+}
+
+
+/* Common Layout Utilities (replicated from Tailwind for core elements) */
+.min-h-screen { min-height: 100vh; }
+.font-sans { font-family: sans-serif; }
+.text-gray-900 { color: var(--text-color-default); }
+body.dark-mode .text-gray-900 {
+  color: var(--text-color-default); 
+}
+
+.p-10 { padding: 2.5rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.max-w-7xl { max-width: 80rem; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-0 { gap: 0; }
+.gap-1 { gap: 0.25rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-5 { gap: 1.25rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-10 { margin-bottom: 2.5rem; }
+.mb-12 { margin-bottom: 3rem; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mr-auto { margin-right: auto; }
+.ml-auto { margin-left: auto; }
+.w-full { width: 100%; }
+.max-w-sm { max-width: 24rem; }
+.max-w-md { max-width: 28rem; }
+.max-w-xs { max-width: 20rem; }
+.hidden { display: none !important; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-2xl { border-radius: 1rem; }
+.text-center { text-align: center; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.z-50 { z-index: 50; }
+.bg-black { background-color: black; }
+.bg-white { background-color: white; }
+.bg-opacity-70 { background-color: rgba(0,0,0,0.7); }
+.bg-opacity-60 { background-color: rgba(0,0,0,0.6); }
+
+
+/* Common Header/Navbar (for VLibras and Theme Toggle) */
+.theme-toggle {
+    position: fixed;
+    top: 10px; 
+    right: 10px; 
+    background: none;
+    border: none;
+    font-size: 2.2rem; 
+    cursor: pointer;
+    color: var(--primary-btn-bg); 
+    z-index: 11000;
+}
+body.dark-mode .theme-toggle {
+    color: var(--primary-btn-bg); 
+}
+
+
+/* Header styles */
+#conteudo header {
+  margin-bottom: 2.5rem;
+}
+@media (min-width: 768px) {
+  #conteudo header {
+    flex-direction: row;
+  }
+}
+
+#conteudo h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-color-header);
+  display: flex;
+  align-items: center;
+}
+body.dark-mode #conteudo h1 {
+  color: var(--text-color-header); /* Apply dark mode color */
+}
+#conteudo h1 i {
+  font-size: 3rem;
+}
+
+#conteudo header > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#conteudo header button, #conteudo header a {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--primary-btn-text);
+}
+body.dark-mode #conteudo header button, body.dark-mode #conteudo header a {
+  color: var(--primary-btn-text);
+}
+
+
+#btn-sair {
+  background-color: var(--red-btn-bg);
+}
+#btn-sair:hover {
+  background-color: var(--red-btn-hover-bg);
+}
+body.dark-mode #btn-sair {
+  background-color: var(--red-btn-bg);
+}
+
+
+#conteudo header a {
+  background-color: var(--blue-btn-bg);
+}
+#conteudo header a:hover {
+  background-color: var(--blue-btn-hover-bg);
+}
+body.dark-mode #conteudo header a {
+  background-color: var(--blue-btn-bg);
+}
+
+
+/* Filter Inputs */
+#conteudo section.flex-col {
+  margin-bottom: 2.5rem;
+}
+
+#filtro-titulo, #filtro-nome {
+  flex: 1;
+  min-width: 13.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 1.125rem;
+  color: var(--text-color-default);
+  background-color: var(--main-content-bg);
+}
+#filtro-titulo::placeholder, #filtro-nome::placeholder {
+  color: var(--input-placeholder);
+}
+#filtro-titulo:focus, #filtro-nome:focus {
+  outline: 2px solid var(--input-border);
+  outline-offset: 2px;
+}
+body.dark-mode #filtro-titulo, body.dark-mode #filtro-nome {
+  background-color: var(--main-content-bg);
+  border-color: var(--input-border);
+  color: var(--text-color-default);
+}
+body.dark-mode #filtro-titulo::placeholder, body.dark-mode #filtro-nome::placeholder {
+  color: var(--input-placeholder);
+}
+
+
+/* Table Container */
+#conteudo section.overflow-auto {
+  border-radius: 1rem;
+  background-color: var(--main-content-bg);
+  border: 1px solid var(--main-content-border);
+  overflow: auto; /* Ensure scrolling */
+}
+body.dark-mode #conteudo section.overflow-auto {
+  background-color: var(--main-content-bg);
+  border-color: var(--main-content-border);
+}
+
+
+/* Table Styles */
+table {
+  width: 100%;
+  text-align: left;
+  color: var(--text-color-default);
+  font-size: 1rem;
+  border-collapse: collapse;
+}
+body.dark-mode table {
+  color: var(--text-color-default);
+}
+@media (min-width: 768px) {
+  table {
+    font-size: 1.125rem;
+  }
+}
+
+/* Table Header */
+thead {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-text);
+  font-weight: 800;
+  position: sticky;
+  top: 0;
+  user-select: none;
+}
+body.dark-mode thead {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-text);
+}
+
+
+th {
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--table-row-border);
+}
+th.whitespace-nowrap { white-space: nowrap; }
+th.max-w-xs { max-width: 10rem; }
+th.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Table Rows */
+tbody tr { cursor: default; }
+tbody tr:hover { background-color: var(--table-row-hover); }
+body.dark-mode tbody tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+
+td {
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid var(--table-row-border);
+}
+td.max-w-xs { max-width: 10rem; }
+td.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Actions Column */
+td.text-center { text-align: center; }
+td.w-28 { width: 7rem; }
+td.whitespace-nowrap { white-space: nowrap; }
+
+/* Links within table cells (Curriculo, Certificacoes) */
+td a {
+  color: var(--primary-btn-bg);
+  font-weight: 600;
+  text-decoration: underline;
+}
+td a:hover {
+  color: var(--primary-btn-hover-bg);
+  text-decoration: none;
+}
+body.dark-mode td a {
+  color: var(--primary-btn-bg);
+}
+body.dark-mode td a:hover {
+  color: var(--primary-btn-hover-bg);
+}
+
+
+/* Status messages for empty data */
+td span.text-gray-400 { color: var(--table-text-muted); }
+body.dark-mode td span.text-gray-400 {
+  color: var(--table-text-muted);
+}
+
+
+/* Specific button for table row actions (Excluir) */
+button[aria-label^="Excluir inscrição"] {
+  color: var(--red-btn-bg);
+  font-weight: 600;
+}
+button[aria-label^="Excluir inscrição"]:hover {
+  color: var(--red-btn-hover-bg);
+}
+body.dark-mode button[aria-label^="Excluir inscrição"] {
+  color: var(--red-btn-bg);
+}
+body.dark-mode button[aria-label^="Excluir inscrição"]:hover {
+  color: var(--red-btn-hover-bg);
+}
+
+
+/* Scrollbar styles */
+::-webkit-scrollbar { height: 10px; width: 10px; }
+::-webkit-scrollbar-thumb { background-color: var(--primary-btn-bg); border-radius: 10px; }
+::-webkit-scrollbar-track { background-color: var(--table-row-hover); }
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background-color: var(--primary-btn-bg);
+}
+body.dark-mode ::-webkit-scrollbar-track {
+  background-color: var(--table-row-hover);
+}
+

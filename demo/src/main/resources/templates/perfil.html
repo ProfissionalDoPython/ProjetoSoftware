@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil do Talento</title>
+    <link rel="stylesheet" href="/css/perfil.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+  <img
+    src="/img/bancos.png"
+    alt="Logo Topo"
+    class="fixed top-4 left-4 h-16 z-50"
+  />
+  <img
+    src="/img/logo_ueg.png"
+    alt="Logo Topo"
+    class="fixed top-4 right-4 h-20 z-50"
+  />
+
+  <body class="bg-gray-100 text-gray-800 mt-0 pt-2">
+
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+    <div class="max-w-4xl mx-auto px-6 pt-4">
+      <div
+        class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4"
+        data-aos="fade-up"
+      >
+        <div class="relative">
+          <img
+            id="avatar-img"
+            src="/img/perfil_icon.jpg" alt="Avatar"
+            class="w-20 h-20 rounded-full object-cover"
+          />
+          <input
+            id="avatar-upload"
+            type="file"
+            accept="image/*"
+            class="hidden"
+          />
+          <button
+            id="upload-avatar-btn"
+            class="absolute bottom-0 right-0 bg-blue-600 text-white rounded-full p-1 text-xs hover:bg-blue-700"
+            style="display: none"
+          >
+            📷
+          </button>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <input
+              type="text"
+              id="nome"
+              value="Carregando Nome..."
+              readonly
+              class="text-2xl font-bold w-full"
+            />
+            <button
+              id="edit-btn"
+              class="ml-4 bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700"
+            >
+              Editar Perfil
+            </button>
+            <button
+              id="save-btn"
+              class="ml-4 bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700"
+              style="display: none"
+            >
+              Salvar
+            </button>
+          </div>
+          <input
+            type="text"
+            id="profissao"
+            value="Carregando Profissão..."
+            readonly
+            class="text-gray-500 w-full mt-1"
+          />
+          <input type="hidden" id="cpf" value="" />
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-xl shadow" data-aos="fade-right">
+          <h3 class="text-xl font-semibold mb-2">Formação Acadêmica</h3>
+          <ul class="list-disc ml-5 text-gray-700" id="formacaoAcademicaList">
+            </ul>
+          <button id="add-formacao-btn" class="hidden mt-2 bg-blue-500 text-white px-3 py-1 rounded">Add Formação</button>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow" data-aos="fade-left">
+          <h3 class="text-xl font-semibold mb-2">Experiência Profissional</h3>
+          <ul class="list-disc ml-5 text-gray-700" id="experienciaProfissionalList">
+            </ul>
+          <button id="add-experiencia-btn" class="hidden mt-2 bg-blue-500 text-white px-3 py-1 rounded">Add Experiência</button>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-white p-4 rounded-xl shadow" data-aos="zoom-in">
+        <h3 class="text-xl font-semibold mb-4">Habilidades Principais</h3>
+        <canvas
+          id="skillsChart"
+          class="w-full"
+          style="max-height: 300px"
+        ></canvas>
+        <div id="skills-edit" class="mt-4 space-y-2 hidden">
+            </div>
+         <button id="add-skill-btn" class="hidden mt-2 bg-blue-500 text-white px-3 py-1 rounded">Add Habilidade</button>
+      </div>
+
+      <div id="notificacoes-container">
+        <div id="vagas-lista">
+          <input type="text" value="Vaga: Desenvolvedor Frontend - Empresa ABC" readonly/>
+          <input type="text" value="Vaga: Analista de Dados - Empresa XYZ" readonly/>
+          <input type="text" value="Vaga: Estagiário de Marketing - Empresa 123" readonly/>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto p-6 space-y-6">
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Áreas de Interesse
+        </h3>
+        <div class="grid grid-cols-2 gap-4 text-gray-700" id="areasInteresseList">
+          </div>
+        <button id="add-area-interesse-btn" class="hidden mt-2 bg-blue-500 text-white px-3 py-1 rounded">Add Área</button>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Objetivos Profissionais
+        </h3>
+        <textarea
+          id="objetivosProfissionais"
+          rows="4"
+          readonly
+          class="text-gray-700 leading-relaxed w-full p-2 border border-transparent focus:border-blue-500 rounded-md bg-gray-100"
+        >Carregando objetivos...</textarea>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Experiência Acadêmica
+        </h3>
+        <p class="text-gray-500 mb-2" id="experienciaAcademicaHint">
+          Inclua estágios, monitorias, ICs ou outros projetos.
+        </p>
+        <textarea
+          id="experienciaAcademica"
+          rows="4"
+          readonly
+          class="text-gray-700 leading-relaxed w-full p-2 border border-transparent focus:border-blue-500 rounded-md bg-gray-100"
+        >Carregando experiência acadêmica...</textarea>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-right">
+          <h3 class="text-2xl font-semibold mb-4 text-gray-800">Idiomas</h3>
+          <ul class="text-gray-700" id="idiomasList">
+            </ul>
+          <button id="add-idioma-btn" class="hidden mt-2 bg-blue-500 text-white px-3 py-1 rounded">Add Idioma</button>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-left">
+          <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+            Participações Acadêmicas/Profissionais
+          </h3>
+          <div class="text-gray-700" id="participacoesList">
+            </div>
+          <button id="add-participacao-btn" class="hidden mt-2 bg-blue-500 text-white px-3 py-1 rounded">Add Participação</button>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Projetos Destacados
+        </h3>
+        <ul class="space-y-2 text-gray-700" id="projetosDestacadosList">
+          </ul>
+        <button id="add-projeto-btn" class="hidden mt-2 bg-blue-500 text-white px-3 py-1 rounded">Add Projeto</button>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-4 text-gray-800">
+          Redes Profissionais
+        </h3>
+        <ul class="space-y-2 text-blue-600">
+          <li>
+            <input type="url" id="linkedin" value="Carregando LinkedIn..." readonly class="w-full border-b border-transparent focus:border-blue-500 bg-transparent text-blue-600" />
+          </li>
+          <li>
+            <input type="url" id="github" value="Carregando GitHub..." readonly class="w-full border-b border-transparent focus:border-blue-500 bg-transparent text-blue-600" />
+          </li>
+          <li>
+            <input type="url" id="portfolio" value="Carregando Portfólio..." readonly class="w-full border-b border-transparent focus:border-blue-500 bg-transparent text-blue-600" />
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <img src="/img/mascote.png" alt="Mascote" class="mascote" id="mascote" />
+    <div id="motivational-phrase"></div>
+    <div id="chat-botao">💬</div>
+    <div id="chat-box">
+      <label for="chat-target" class="block font-bold mb-1"
+        >Conversar com:</label
+      >
+      <select id="chat-target" class="w-full mb-2 border p-1 rounded">
+        <option value="mascote">🤖 Mascote</option>
+        <option value="admin">🛡️ Equipe suporte</option>
+      </select>
+      <div
+        id="chat-mensagens"
+        class="h-32 overflow-y-auto border p-2 mb-2 rounded text-sm bg-gray-50"
+      ></div>
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Digite sua mensagem..."
+        class="w-full p-2 border rounded"
+      />
+    </div>
+
+    <div class="linha-calendario-agenda">
+      <div class="calendario-mes bloco-calendario">
+        <div class="header-mes">
+          <button id="btn-anterior">&lt;</button>
+          <h2 id="titulo-mes">Carregando...</h2>
+          <button id="btn-proximo">&gt;</button>
+        </div>
+
+        <div class="grade-semana">
+          <div>Dom</div>
+          <div>Seg</div>
+          <div>Ter</div>
+          <div>Qua</div>
+          <div>Qui</div>
+          <div>Sex</div>
+          <div>Sáb</div>
+        </div>
+
+        <div id="grade-dias" class="grade-dias"></div>
+      </div>
+
+      <div id="container-agenda" class="bloco-agenda agenda-fechada">
+        <button
+          id="btn-fechar-agenda"
+          aria-label="Fechar agenda"
+          style="
+            position: absolute;
+            top: -10px;
+            left: -110px;
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: brown;
+          "
+        >
+          fechar
+        </button>
+        <h3>Agenda do Dia</h3>
+        <div id="data-selecionada">Selecione um dia</div>
+
+        <label for="nota-dia" class="section-header">Notas gerais</label>
+        <textarea
+          id="nota-dia"
+          placeholder="Escreva suas anotações aqui..."
+        ></textarea>
+
+        <label for="urgent-textarea" class="section-header">Urgente</label>
+        <textarea
+          id="urgent-textarea"
+          placeholder="Tarefas urgentes..."
+        ></textarea>
+
+        <label for="notes-textarea" class="section-header">Outras notas</label>
+        <textarea
+          id="notes-textarea"
+          placeholder="Outras anotações..."
+        ></textarea>
+
+        <label class="section-header">Tarefas</label>
+        <ul id="lista-todo" class="lista-check"></ul>
+        <button id="btn-add-tarefa" style="margin-top: 10px">
+          + Adicionar
+        </button>
+        <button id="btn-apagar-nota" style="margin-top: 10px">🗑 Apagar</button>
+        <button id="salvar-nota" style="margin-top: 10px">Salvar</button>
+
+        <div id="status-nota"></div>
+        <div id="container-agenda" class="agenda-fechada">
+          <h2 id="titulo-mes"></h2>
+          <div id="grade-dias"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="eventos-do-dia" style="margin-bottom: 20px"></div>
+
+    <div id="evento-detalhado" class="evento-detalhado hidden">
+      <h3>Detalhes do Evento</h3>
+      <div id="evento-detalhado-conteudo"></div>
+    </div>
+
+    <script src="/js/perfil.js"></script>
+  </body>
+</html>

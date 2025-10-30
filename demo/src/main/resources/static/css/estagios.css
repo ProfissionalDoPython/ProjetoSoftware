@@ -1,0 +1,256 @@
+/* Custom CSS for Estágios page */
+
+/* Variables for light and dark mode (consistent with your styles.css) */
+:root {
+    --bg-body: antiquewhite;
+    --form-text: #222;
+    --btn-bg: #3657a9;
+    --card-bg: white;
+    --link-color: #ffcc00;
+    --link-hover-color: rgb(17, 5, 88);
+    --footer-bg-color: #003366;
+    --footer-text-color: white;
+
+    /* Dark mode specific variables */
+    --dark-bg-color: #121212;
+    --dark-form-text: #f0f0f0;
+    --dark-btn-bg: #3b6cf0;
+    --dark-card-bg: #333;
+    --dark-link-color: #ff9900;
+    --dark-link-hover-color: white;
+    --dark-footer-bg-color: #222;
+    --dark-footer-text-color: white;
+    --dark-border-color: #555;
+
+    /* New variables for the corner navbar */
+    --corner-nav-link-color: #003366;
+    --corner-nav-link-hover-color: orange;
+    --dark-corner-nav-link-color: #ffcc00;
+    --dark-corner-nav-link-hover-color: white;
+
+    /* New header colors */
+    --header-bg-color: #10B981; /* Light mode header green */
+    --header-text-color: white;
+    --header-link-hover-color: #e2e8f0;
+
+    /* ADDED FOR DARK MODE HEADER */
+    --dark-header-bg-color: #2a2a2a; /* A darker gray for dark mode header */
+}
+
+/* Base body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: var(--bg-body);
+    color: var(--form-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-form-text);
+}
+
+/* Theme Toggle Button (consistent with other pages) */
+.theme-toggle {
+    position: fixed;
+    top: 8px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--btn-bg);
+    z-index: 11000;
+}
+body.dark-mode .theme-toggle {
+    color: var(--dark-btn-bg);
+}
+
+/* NEW: Main Header Styles */
+.main-header {
+    background-color: var(--header-bg-color);
+    color: var(--header-text-color);
+    padding: 1rem 2rem; /* Original padding */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.main-header .logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--header-text-color);
+}
+
+.main-header .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.main-header .main-nav ul li a {
+    color: var(--header-text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.main-header .main-nav ul li a:hover {
+    color: var(--header-link-hover-color);
+}
+
+/* Dark mode for the new header */
+body.dark-mode .main-header {
+    background-color: var(--dark-header-bg-color); /* Use the dark mode header color */
+    color: var(--dark-form-text);
+}
+
+body.dark-mode .main-header .logo h1 {
+    color: var(--dark-form-text);
+}
+
+body.dark-mode .main-header .main-nav ul li a {
+    color: var(--dark-form-text);
+}
+
+body.dark-mode .main-header .main-nav ul li a:hover {
+    color: var(--header-link-hover-color); /* Same hover for dark mode links for consistency */
+}
+
+
+/* Mobile Responsiveness for the new header */
+@media (max-width: 768px) {
+    .main-header .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .main-header .main-nav ul {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+
+/* Styles unique to estagios.html */
+main {
+    margin-top: 100px; /* Adjusted margin-top to account for the new fixed header height and some space */
+}
+
+h1, h2 {
+    color: var(--form-text);
+}
+body.dark-mode h1, body.dark-mode h2 {
+    color: var(--dark-form-text);
+}
+
+section.mb-6.bg-white.p-4.rounded-xl.shadow { /* Filter section */
+    background-color: var(--card-bg);
+    color: var(--form-text);
+}
+body.dark-mode section.mb-6.bg-white.p-4.rounded-xl.shadow {
+    background-color: var(--dark-card-bg);
+    color: var(--dark-form-text);
+}
+
+select, input[type="text"] { /* Filter selects and general inputs */
+    background-color: var(--bg-body);
+    color: var(--form-text);
+    border-color: var(--border-color);
+}
+body.dark-mode select, body.dark-mode input[type="text"] {
+    background-color: var(--dark-card-bg);
+    color: var(--dark-form-text);
+    border-color: var(--dark-border-color);
+}
+
+/* Internship cards */
+.border.rounded-xl.p-4.shadow.bg-white {
+    background-color: var(--card-bg);
+    color: var(--form-text);
+}
+body.dark-mode .border.rounded-xl.p-4.shadow.bg-white {
+    background-color: var(--dark-card-bg);
+    color: var(--dark-form-text);
+    border-color: var(--dark-border-color);
+}
+
+.text-gray-600 { /* For descriptions and minor text */
+    color: #666;
+}
+body.dark-mode .text-gray-600 {
+    color: #bbb;
+}
+
+.text-gray-700 { /* For list items */
+    color: #4a4a4a;
+}
+body.dark-mode .text-gray-700 {
+    color: #ccc;
+}
+
+
+/* Buttons */
+#btn-limpar { /* Limpar Filtros */
+    background-color: #ccc;
+    color: #333;
+}
+#btn-limpar:hover {
+    background-color: #bbb;
+}
+body.dark-mode #btn-limpar {
+    background-color: #555;
+    color: #e0e0e0;
+}
+body.dark-mode #btn-limpar:hover {
+    background-color: #777;
+}
+
+.bg-green-600 { /* Candidatar-se */
+    background-color: #10b981; /* Default green */
+}
+.hover\:bg-green-700:hover { /* Candidatar-se hover */
+    background-color: #059669; /* Darker green on hover */
+}
+body.dark-mode .bg-green-600 {
+    background-color: #4caf50; /* Brighter green for dark mode */
+}
+body.dark-mode .hover\:bg-green-700:hover {
+    background-color: #388e3c; /* Darker green on hover for dark mode */
+}
+
+/* Footer (consistent with other pages) */
+footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+}
+body.dark-mode footer {
+    background-color: var(--dark-footer-bg-color);
+}
+footer a {
+    color: #ffcc00; /* Footer link color */
+}
+body.dark-mode footer a {
+    color: #ff9900; /* Dark mode footer link color */
+}

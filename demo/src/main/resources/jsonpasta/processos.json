@@ -1,0 +1,92 @@
+[
+  {
+    "id": "ps001",
+    "titulo": "Seleção para Mestrado em Computação - UFPR",
+    "inscricoesAte": "15 de julho de 2025",
+    "etapas": "Prova escrita, análise de currículo e entrevista.",
+    "area": "Tecnologia",
+    "modalidade": "Presencial",
+    "mes": "julho",
+    "linkCandidatura": "https://web.inf.ufpr.br/forppgcc-pr/?p=427"
+  },
+  {
+    "id": "ps002",
+    "titulo": "Concurso Público para Professor de Matemática - Secretaria de Educação GO",
+    "inscricoesAte": "30 de agosto de 2025",
+    "etapas": "Prova escrita, prova prática e análise de currículo.",
+    "area": "Matemática",
+    "modalidade": "Presencial",
+    "mes": "agosto",
+    "linkCandidatura": "https://goias.gov.br/educacao/concurso-publico/"
+  },
+  {
+    "id": "ps003",
+    "titulo": "Processo Seletivo para Estágio em Engenharia Civil - Construtora Exemplo",
+    "inscricoesAte": "20 de setembro de 2025",
+    "etapas": "Análise de currículo, prova escrita e dinâmica de grupo.",
+    "area": "Engenharia",
+    "modalidade": "Hibrido",
+    "mes": "setembro",
+    "linkCandidatura": "https://www.glassdoor.com.br/Vaga/brasil-est%C3%A1gio-em-engenharia-civil-vagas-SRCH_IL.0,6_KO7,34.htm"
+  },
+  {
+    "id": "ps004",
+    "titulo": "Seleção para Doutorado em Educação Física - USP",
+    "inscricoesAte": "15 de outubro de 2025",
+    "etapas": "Prova escrita de conhecimentos específicos, análise de projeto de pesquisa e entrevista.",
+    "area": "Educação",
+    "modalidade": "Presencial",
+    "mes": "outubro",
+    "linkCandidatura": "https://www4.fe.usp.br/pos-graduacao/selecao/processo-seletivo"
+  },
+  {
+    "id": "ps005",
+    "titulo": "Edital para Bolsas de Pós-Graduação em Ciência de Dados - Instituto de Pesquisa Avançada",
+    "inscricoesAte": "05 de julho de 2025",
+    "etapas": "Análise de histórico, carta de intenção e entrevista online.",
+    "area": "Tecnologia",
+    "modalidade": "Online",
+    "mes": "julho",
+    "linkCandidatura": "https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/programa-institucional-de-bolsas-de-pos-graduacao"
+  },
+  {
+    "id": "ps006",
+    "titulo": "Programa de Trainee em Gestão Ambiental - BioSustentável Consultoria",
+    "inscricoesAte": "10 de setembro de 2025",
+    "etapas": "Testes lógicos e comportamentais, dinâmica de grupo e entrevistas com gestores.",
+    "area": "Meio Ambiente",
+    "modalidade": "Hibrido",
+    "mes": "setembro",
+    "linkCandidatura": "https://www.solvi.com/programa-trainee"
+  },
+  {
+    "id": "ps007",
+    "titulo": "Concurso para Analista Financeiro - Banco Investe+",
+    "inscricoesAte": "25 de agosto de 2025",
+    "etapas": "Prova objetiva, prova discursiva e avaliação de títulos.",
+    "area": "Finanças",
+    "modalidade": "Presencial",
+    "mes": "agosto",
+    "linkCandidatura": "https://www.estrategiaconcursos.com.br/blog/concursos-bancarios/?msockid=3bc91e62d0b668911cc60b79d1cf6975"
+  },
+  {
+    "id": "ps008",
+    "titulo": "Processo Seletivo para Analista de RH - Startup InovaTalentos",
+    "inscricoesAte": "05 de outubro de 2025",
+    "etapas": "Análise de currículo, entrevista por competências e case study.",
+    "area": "Recursos Humanos",
+    "modalidade": "Online",
+    "mes": "outubro",
+    "linkCandidatura": "https://ielsc.org.br/pt-br/inovatalentos/para-talentos"
+  },
+  {
+    "id": "ps009",
+    "titulo": "Bolsa de Iniciação Científica em Design Digital - FAPESP",
+    "inscricoesAte": "18 de julho de 2025",
+    "etapas": "Análise de histórico, plano de pesquisa e entrevista com orientador.",
+    "area": "Design",
+    "modalidade": "Presencial",
+    "mes": "julho",
+    "linkCandidatura": "https://fapesp.br/bolsas/ic"
+  }
+]

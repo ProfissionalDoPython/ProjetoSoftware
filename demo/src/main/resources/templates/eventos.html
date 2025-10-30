@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/evento.css" />
+    <title>Eventos Profissionais</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+
+    <header>
+      <h1>Eventos Profissionais</h1>
+      <p>Feiras, workshops e treinamentos para seu crescimento</p>
+      <button onclick="toggleTheme()" class="theme-toggle">🌗</button>
+    </header>
+    <header class="header-navbar">
+      <nav class="navbar">
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="menu-links">
+          <li><a href="/principal">Home</a></li>
+          <li><a href="/events">Eventos</a></li>
+          <li><a href="/transparencia">Transparência</a></li> <li><a href="/perfil">Perfil</a></li> <li><a href="#parceiros">Andamento</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section id="inicio" class="evento">
+        <h2 class="titulo-principal">Bem-vindo aos Eventos</h2>
+        <p class="descricao">
+          Explore nossos eventos e aproveite as oportunidades de crescimento
+          profissional.
+        </p>
+
+        <section class="evento-destaque-dinamico">
+          <h3>Evento em Destaque:</h3>
+          <div id="destaque-evento-container">
+            <p>Carregando evento destaque...</p>
+          </div>
+        </section>
+
+        <section class="lista-todos-eventos">
+          <h3>Todos os Eventos</h3>
+          <ul id="todos-eventos-lista">
+            <p>Carregando eventos...</p>
+          </ul>
+        </section>
+      </section>
+
+      <section id="proximos" class="evento">
+        <h2 class="titulo-principal">Próximos Eventos Estáticos (Exemplo)</h2>
+        <div class="evento-destaque">
+          <h3>Workshop de Desenvolvimento Web</h3>
+          <ul class="detalhes-evento">
+            <li><strong>Data:</strong> 15 de Junho de 2025</li>
+            <li><strong>Local:</strong> Centro de Inovação, Goiás - GO</li>
+          </ul>
+          <p class="descricao">
+            Criação de sites modernos com especialistas da área.
+          </p>
+        </div>
+        </section>
+
+      <section id="sobre-contato" class="evento">
+        <h2 class="titulo-principal">Sobre & Contato</h2>
+        <p class="descricao">
+          Esta página reúne e divulga eventos voltados ao desenvolvimento
+          profissional, como feiras, workshops, palestras e treinamentos.
+        </p>
+        <p class="descricao">
+          Nosso objetivo é oferecer um espaço de informação e crescimento para
+          profissionais, estudantes e interessados em aprimorar suas
+          habilidades.
+        </p>
+        <p class="descricao">
+          Aqui você encontra datas, locais e detalhes dos eventos para planejar
+          sua participação com antecedência e clareza.
+        </p>
+        <p class="descricao">
+          📧 <strong>Contato:</strong> dúvidas ou sugestões? Envie um e-mail
+          para <a href="mailto:eventos@ueg.br">eventos@ueg.br</a>
+        </p>
+      </section>
+    </main>
+
+    <script src="/js/evento.js"></script>
+  </body>
+</html>

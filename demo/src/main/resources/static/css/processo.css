@@ -1,0 +1,283 @@
+/* Seu CSS personalizado para processos seletivos */
+
+/* Variáveis para modo claro e escuro (do styles.css para consistência) */
+:root {
+    --bg-body: antiquewhite;
+    --form-bg: #3a52a5; /* This might not be directly used anymore for general forms if Tailwind is prevalent */
+    --form-text: #222;
+    --btn-bg: #3657a9; /* Main button for theme toggle, etc. */
+    --border-color: #ddd;
+    --gradiente-cor1: #e6f0ff; /* Likely not used with new header */
+    --gradiente-cor2: #a9c0ff; /* Likely not used with new header */
+    --gradiente-cor3: #617fdb; /* Likely not used with new header */
+    --nova-cor: #738fe5; /* Likely not used with new header */
+    --nova-cor2: #f6f8ff; /* Likely not used with new header */
+    --cor: #2b57d6; /* Likely not used with new header */
+    --shadow-light: rgba(0, 0, 0, 0.06);
+    --shadow-medium: rgba(0, 0, 0, 0.18);
+    --card-bg: white; /* Added for consistency with other pages */
+
+
+    /* Dark mode specific variables for light mode */
+    --dark-bg-color: #121212;
+    --dark-form-bg: #1e1e2f;
+    --dark-form-text: #f0f0f0;
+    --dark-btn-bg: #3b6cf0;
+    --dark-border-color: #444;
+    --dark-gradiente-cor1: #1e1e1e; /* Likely not used with new header */
+    --dark-gradiente-cor2: #292b61; /* Likely not used with new header */
+    --dark-gradiente-cor3: #3a3d8c; /* Likely not used with new header */
+    --dark-nova-cor: #2a2a2a; /* Likely not used with new header */
+    --dark-nova-cor2: #1e1e1e; /* Likely not used with new header */
+    --dark-cor: #3b6cf0; /* Likely not used with new header */
+    --dark-shadow-light: rgba(255, 255, 255, 0.05);
+    --dark-shadow-medium: rgba(255, 255, 255, 0.1);
+    --dark-card-bg: #333; /* Added for consistency with other pages */
+
+    /* NEW HEADER COLORS (ADAPTED FOR PROCESSOS PAGE) */
+    --header-bg-color: #dc2626; /* Primary Red for processos header (same as bg-red-600) */
+    --header-text-color: white;
+    --header-link-hover-color: #fca5a5; /* Lighter red for hover */
+    --dark-header-bg-color: #8b0000; /* Darker red for dark mode header */
+}
+
+/* Base body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    /* padding-top: 48px; REMOVED - Handled by fixed header */
+    background-color: var(--bg-body);
+    color: var(--form-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-form-text);
+}
+
+/* Theme Toggle Button (consistent with other pages) */
+.theme-toggle {
+    position: fixed;
+    top: 8px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--btn-bg); /* Use primary button color */
+    z-index: 11000;
+}
+body.dark-mode .theme-toggle {
+    color: var(--dark-btn-bg);
+}
+
+/* REMOVED OLD HEADER NAVBAR STYLES */
+/* .header-navbar { ... } */
+/* .header-navbar .navbar { ... } */
+/* .header-navbar .navbar a { ... } */
+/* .header-navbar .navbar a::after { ... } */
+/* .header-navbar .navbar a:hover { ... } */
+/* .header-navbar .navbar a:hover::after { ... } */
+/* .menu-toggle { ... } */
+/* .menu-links { ... } */
+/* .menu-links li a { ... } */
+/* @media (max-width: 768px) { .menu-toggle { ... } .menu-links { ... } ... } */
+
+
+/* NEW: Main Header Styles (Consistent with estagios.css but with red palette) */
+.main-header {
+    background-color: var(--header-bg-color); /* Red for processos page */
+    color: var(--header-text-color);
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.main-header .logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--header-text-color);
+}
+
+.main-header .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.main-header .main-nav ul li a {
+    color: var(--header-text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.main-header .main-nav ul li a:hover {
+    color: var(--header-link-hover-color);
+}
+
+/* Dark mode for the new header */
+body.dark-mode .main-header {
+    background-color: var(--dark-header-bg-color); /* Darker red for dark mode header */
+    color: var(--dark-form-text);
+}
+
+body.dark-mode .main-header .logo h1 {
+    color: var(--dark-form-text);
+}
+
+body.dark-mode .main-header .main-nav ul li a {
+    color: var(--dark-form-text);
+}
+
+body.dark-mode .main-header .main-nav ul li a:hover {
+    color: var(--header-link-hover-color);
+}
+
+
+/* Mobile Responsiveness for the new header */
+@media (max-width: 768px) {
+    .main-header .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .main-header .main-nav ul {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+
+/* Styles unique to processos.html */
+main {
+    margin-top: 100px; /* Adjusted margin-top for fixed header */
+}
+
+h1, h2 {
+    color: var(--form-text); /* Use common text color */
+}
+body.dark-mode h1, body.dark-mode h2 {
+    color: var(--dark-form-text);
+}
+
+section.mb-6.bg-white.p-4.rounded-xl.shadow { /* Filter section - using a more general selector */
+    background-color: var(--card-bg);
+    color: var(--form-text);
+}
+body.dark-mode section.mb-6.bg-white.p-4.rounded-xl.shadow {
+    background-color: var(--dark-card-bg);
+    color: var(--dark-form-text);
+}
+
+select, input[type="text"] { /* Styles for filter selects and general inputs */
+    background-color: var(--bg-body);
+    color: var(--form-text);
+    border-color: var(--border-color);
+}
+body.dark-mode select, body.dark-mode input[type="text"] {
+    background-color: var(--dark-card-bg); /* Darker background for inputs in dark mode */
+    color: var(--dark-form-text);
+    border-color: var(--dark-border-color);
+}
+
+/* Internship cards - adjusted selector to match processes structure */
+.border.rounded-xl.p-4.shadow.bg-white { /* This should apply to the inner div of the process card */
+    background-color: var(--card-bg);
+    color: var(--form-text);
+}
+body.dark-mode .border.rounded-xl.p-4.shadow.bg-white {
+    background-color: var(--dark-card-bg);
+    color: var(--dark-form-text);
+    border-color: var(--dark-border-color);
+}
+
+.text-gray-600 {
+    color: #666;
+}
+body.dark-mode .text-gray-600 {
+    color: #bbb;
+}
+
+/* Buttons */
+.bg-gray-300 { /* Limpar Filtros */
+    background-color: #ccc;
+    color: #333;
+}
+.hover\:bg-gray-400:hover { /* Limpar Filtros hover */
+    background-color: #bbb;
+}
+body.dark-mode .bg-gray-300 {
+    background-color: #555;
+    color: #e0e0e0;
+}
+body.dark-mode .hover\:bg-gray-400:hover {
+    background-color: #777;
+}
+
+/* Specific red for Candidatar-se button */
+.bg-red-600 {
+    background-color: #dc2626; /* Your existing red */
+}
+.hover\:bg-red-700:hover {
+    background-color: #b91c1c; /* Darker red on hover */
+}
+body.dark-mode .bg-red-600 {
+    background-color: #ef4444; /* Brighter red for dark mode, adjust if needed */
+}
+body.dark-mode .hover\:bg-red-700:hover {
+    background-color: #b91c1c; /* Keep hover consistent */
+}
+
+
+/* Footer (consistent with the red theme of this page) */
+footer {
+    background-color: #dc2626; /* Use the same red as the main header/buttons for consistency */
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+}
+body.dark-mode footer {
+    background-color: #8b0000; /* Darker red for dark mode footer */
+}
+footer a {
+    color: #ffcc00; /* Footer link color - keep this, or change to a shade of red/white */
+}
+body.dark-mode footer a {
+    color: #ff9900; /* Dark mode footer link color */
+}
+
+/* Formulario de inscricao (if you re-add it directly here instead of inscricao.html) */
+body.dark-mode .bg-gray-100 { /* For the form background */
+    background-color: #2a2a2a;
+}
+body.dark-mode .border {
+    border-color: #555;
+}
+/* These green buttons are from estagios, if you have green buttons in processos, you might need to adjust */
+body.dark-mode .bg-green-600 {
+    background-color: #16a34a;
+}
+body.dark-mode .hover\:bg-green-700:hover {
+    background-color: #15803d;
+}
