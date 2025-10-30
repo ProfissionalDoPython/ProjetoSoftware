@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Login</title>
+    
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: antiquewhite url('imagens/fundo.png') no-repeat center 100% fixed;
+        background-size: contain;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        transition: background 0.3s, color 0.3s;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: transparent;
+        gap: 40px;
+        max-width: 1200px;
+        width: 100%;
+      }
+
+      .logo {
+        width: 400px;
+        margin: 0 auto 20px;
+        display: block;
+      }
+
+      .login-box {
+        background-color: rgba(15, 23, 42, 0.95);
+        padding: 40px 50px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        width: 100%;
+        max-width: 600px;
+        transition: transform 0.3s;
+      }
+
+      .login-box:hover {
+        transform: scale(1.02);
+      }
+
+      .login-box h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .login-box p {
+        font-size: 16px;
+        color: #cbd5e1;
+        margin-bottom: 25px;
+      }
+
+      .login-box input {
+        width: 100%;
+        padding: 14px;
+        margin-bottom: 18px;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        background-color: #b7c0cc;
+        color: white;
+      }
+
+      .password-box {
+        position: relative;
+      }
+
+      .password-box button {
+        position: absolute;
+        right: 10px;
+        top: 12px;
+        background: none;
+        border: none;
+        color: #ccc;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .login-box button[type="submit"] {
+        width: 50%;
+        padding: 14px;
+        background-color: #9a8925;
+        border: none;
+        border-radius: 6px;
+        font-size: 18px;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .login-box button[type="submit"]:hover {
+        background-color: #bef264;
+      }
+
+      .login-box a {
+        display: block;
+        text-align: center;
+        margin-top: 14px;
+        color: #60a5fa;
+        font-size: 14px;
+        text-decoration: none;
+      }
+
+      .courses-box {
+        flex: 1;
+      }
+
+      .courses-box h2 {
+        color: black;
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+
+      .courses-box p {
+        font-size: 14px;
+        color: #0e3462;
+        margin-bottom: 25px;
+      }
+
+       .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .course-card {
+        background-color: #1e293b;
+        border-left: 4px solid #22d3ee;
+        padding: 50px;
+        border-radius: 8px;
+        transition: 0.3s;
+      }
+
+      .course-card:hover {
+        transform: translateY(-4px);
+        background-color: #334155;
+      }
+
+      .course-card h4 {
+        margin: 0 0 8px;
+        color: #22d3ee;
+        font-size: 20px;
+        
+      }
+
+      .course-card p {
+        margin: 0;
+        font-size: 15px;
+        color: #e2e8f0;
+      }
+      
+       .grid a {
+        text-decoration: none;
+      }
+
+      .mode-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .mode-toggle:hover {
+        transform: scale(1.2);
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          align-items: center;
+        }
+        .courses-box {
+          width: 100%;
+          position: relative;
+          z-index: 1;
+        }
+      }
+
+      .transparent-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10%;
+        height: auto;
+        z-index: -1;
+        opacity: 0.5;
+      }
+
+      .dark-mode {
+        background: linear-gradient(135deg, #121212, #333);
+        background: rgb(1, 10, 51) url('imagens/fundo.png') no-repeat center 100% fixed;
+        background-size: contain;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+
+      .dark-mode .login-box {
+        background-color: #334155;
+      }
+
+      .dark-mode .courses-box h2,
+      .dark-mode .courses-box p {
+        color: #e2e8f0;
+      }
+
+      .dark-mode .course-card {
+        background-color: #334155;
+        border-left: 4px solid #22d3ee;
+      }
+
+      .dark-mode .course-card:hover {
+        background-color: #1e293b;
+      }
+
+      .dark-mode .course-card h4 {
+        color: #22d3ee;
+      }
+
+      .dark-mode .course-card p {
+        color: #e2e8f0;
+      }
+
+      .sucesso-animacao {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        color: #bef264;
+        font-size: 24px;
+        font-weight: bold;
+        animation: fadein 0.5s ease-in-out;
+      }
+
+      .sucesso-animacao .circulo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        animation: pulsar 1.5s ease-out infinite;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        color: white;
+      }
+      .sucesso-animacao p{
+        font-size: 60px;
+      }
+
+      #confetti-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      @keyframes pulsar {
+        0% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.4); opacity: 0.4; }
+        100% { transform: scale(1); opacity: 0.8; }
+      }
+
+      @keyframes fadein {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+    </style>
+  </head>
+  <body>
+     <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+      </script>
+    <div class="container">
+      <div class="login-box">
+        <img src="imagens/banco.png" alt="Logo" class="logo" />
+        <h2>Já estuda com a gente?</h2>
+        <p>Faça seu login e boa sorte!</p>
+        <form id="loginForm">
+          <input type="text" id="cpf" placeholder="CPF" required />
+          <input type="email" id="email" placeholder="E-mail" required />
+          <div class="password-box">
+           <input type="password" id="senha" placeholder="Senha" required />
+             <button type="button" onclick="mostrarSenha()">
+             <i id="iconeOlho" class="fa fa-eye-slash" style="font-size:20px; color:black;"></i>
+               </button>
+          </div>
+          <button type="submit">ENTRAR</button>
+          <a href="novasenha.html">Mudar senha?</a>
+          <a href="recuperar_senha.html">Esqueci minha senha?</a>
+        </form>
+      </div>
+      <div class="courses-box">
+  <h2>Quer conhecer o caminho para o sucesso?</h2>
+  <p>São mais de mil oportunidades em diversas áreas:</p>
+  <div class="grid">
+
+    <a href="https://www.ueg.br/exec/consulta_diretoria/?funcao=modal_matriz&variavel=22&cur=87&mod=1">
+  <div class="course-card">
+    <h4>BACHARELADO</h4>
+    <p>Direito</p>
+  </div>
+    </a>
+  
+<a href="https://www.ueg.br/exec/consulta_diretoria/?funcao=modal_matriz&variavel=22&cur=16&mod=2">
+  <div class="course-card">
+    <h4>LICENCIATURA</h4>
+    <p>História</p>
+  </div>
+</a>
+
+<a href="https://www.ueg.br/exec/consulta_diretoria/?funcao=modal_matriz&variavel=22&cur=17&mod=2">
+  <div class="course-card">
+    <h4>LICENCIATURA</h4>
+    <p>Letras Português/Inglês</p>
+  </div>
+  </a>
+
+
+  <a href="https://www.ueg.br/exec/consulta_diretoria/?funcao=modal_matriz&variavel=22&cur=19&mod=2">
+  <div class="course-card">
+    <h4>LICENCIATURA</h4>
+    <p>Pedagogia</p>
+  </div>
+  </a>
+
+
+  <a href="https://www.ueg.br/exec/consulta_diretoria/?funcao=modal_matriz&variavel=22&cur=37&mod=3">
+  <div class="course-card">
+    <h4>TECNOLÓGICO</h4>
+    <p>Redes de Computadores</p>
+  </div>
+  </a>
+
+
+  <a href="https://www.ueg.br/exec/consulta_diretoria/?funcao=modal_matriz&variavel=22&cur=93&mod=3">
+  <div class="course-card">
+    <h4>TECNOLÓGICO</h4>
+    <p>Sistemas Para Internet</p>
+  </div>
+  </a>
+
+</div>
+
+    </div>
+
+    <div id="sucesso" class="sucesso-animacao">
+      <canvas id="confetti-canvas"></canvas>
+      <div class="circulo"><i class="	fa fa-check-circle-o" style="font-size:60px;color:green;"></i>
+</div>
+      <p>Login realizado com sucesso!</p>
+    </div>
+
+    <button class="mode-toggle" onclick="toggleDarkMode()">🌓</button>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+ function mostrarSenha() {
+  const input = document.getElementById("senha");
+  const icone = document.getElementById("iconeOlho");
+
+  input.type = input.type === "password" ? "text" : "password";
+
+  if (icone.classList.contains("fa-eye-slash")) {
+    icone.classList.remove("fa-eye-slash");
+    icone.classList.add("fa-eye");
+  } else {
+    icone.classList.remove("fa-eye");
+    icone.classList.add("fa-eye-slash");
+  }
+}
+
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+  }
+
+  document.getElementById("loginForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+    const cpf = document.getElementById("cpf").value.trim();
+
+    if (!email || !senha || !cpf) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha, cpf })
+      });
+
+      const data = await response.json();
+
+      if (data.sucesso) {
+        document.getElementById("sucesso").style.display = "flex";
+        const duration = 4000;
+        const end = Date.now() + duration;
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+        const interval = setInterval(() => {
+          if (Date.now() > end) return clearInterval(interval);
+          confetti(Object.assign({}, defaults, {
+            particleCount: 5,
+            origin: { x: Math.random(), y: Math.random() - 0.2 }
+          }));
+        }, 200);
+
+        setTimeout(() => {
+          window.location.href = "principal.html";
+        }, 2500);
+      } else {
+        alert("E-mail, senha ou CPF incorretos.");
+      }
+    } catch (error) {
+      alert("Erro ao tentar conectar com o servidor.");
+      console.error(error);
+    }
+  });
+</script>
+
+  </body>
+</html>

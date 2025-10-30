@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+         :root {
+            --bg-body: antiquewhite;
+            --form-bg: #f0f0f0;
+            --form-text: black;
+            --logo-bg: #cce5ff;
+            --btn-bg: #003366;
+            --btn-hover: orange;
+            --border-color: #2e73b9;
+        }
+        [data-theme="dark"] {
+            --bg-body: #1e1e1e;
+            --form-bg: #2b2b2b;
+            --form-text: #eee;
+            --logo-bg: #3a3a3a;
+            --btn-bg: #4682b4;
+            --btn-hover: #ffa500;
+            --border-color: #555;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: antiquewhite url('imagens/fundo.png') no-repeat center 140% fixed;
+            background: var(--bg-body);
+            background-size: contain;
+            text-align: center;
+        }
+    
+        .box {
+            color: black;
+            color: var(--form-text);
+            margin: 80px auto;
+            background-color: #f0f0f0;
+            background-color: var(--form-bg);
+            padding: 50px;
+            border-radius: 10px;
+            width: 50%;
+            border: 4px solid #2e73b9;
+            text-align: left;
+            border-color: var(--border-color);
+        }
+    
+        fieldset {
+            border: 4px solid #2e73b9;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.96); 
+            background-image: url('imagens/logoueg.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 800px;
+            background-blend-mode: lighten; 
+            background-color: var(--form-bg);
+            color: var(--form-text);
+            border-color: var(--border-color);
+        }
+  
+        legend {
+            border: 1px solid #2e73b9;
+            padding: 10px;
+            text-align: center;
+            background-color: orange;
+            border-radius: 10px;
+            color: #003366;
+            font-weight: bold;
+        }
+    
+        .inputBox {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+    
+        .inputUser {
+            background: none;
+            border: none;
+            border-bottom: 1px solid #2e73b9;
+            outline: none;
+            color: #003366;
+            font-size: 15px;
+            width: 100%;
+            padding: 5px;
+        }
+    
+        .labelInput {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            pointer-events: none;
+            transition: .5s;
+            color: #497db2;
+        }
+    
+        .inputUser:focus ~ .labelInput,
+        .inputUser:valid ~ .labelInput {
+            top: -20px;
+            font-size: 12px;
+            color: orange;
+        }
+    
+        #data_nascimento {
+            color: #497db2;
+            border: 2px solid #497db2;
+            padding: 8px;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+            width: 100%;
+        }
+    
+        #submit {
+            background-color: #003366;
+            width: 100%;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+    
+        #submit:hover {
+            background-color: orange;
+        }
+    
+        p {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: orange;
+        }
+        label {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #033465;
+        }
+    
+        input[type="radio"] + label {
+            margin-right: 15px;
+        }
+    
+        input[type="file"] {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .logo-fixa {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 250px;
+            z-index: 1000;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--btn-bg);
+        }
+        option{
+            color: #497db2;
+            padding: 8px;
+            font-size: 15px;
+            width: 100%;
+        }
+        select{
+            color: #497db2;
+            border: 2px solid #497db2;
+            padding: 8px;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+            width: 100%;
+        }
+        .campo-invalido {
+            border-radius:4px ;
+            border: 1px solid red !important;
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <div class="box">
+        <form id="form-talent" onsubmit="return validateForm(event)">
+            <fieldset>
+                <legend><b>Fórmulario de Talentos</b></legend>
+                <p>Informações Pessoais:</p>
+                <br>
+                <div class="inputBox">
+                    <input type="text" name="nome" id="nome" class="inputUser" required>
+                    <label for="nome" class="labelInput">Nome completo</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="email" id="email" class="inputUser" required>
+                    <label for="email" class="labelInput">Email</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="tel" name="telefone" id="telefone" class="inputUser" required>
+                    <label for="telefone" class="labelInput">Telefone</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="cidade" id="cidade" class="inputUser" required>
+                    <label for="cidade" class="labelInput">Cidade</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="estado" id="estado" class="inputUser" required>
+                    <label for="estado" class="labelInput">Estado</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="endereço" id="endereço" class="inputUser" required>
+                    <label for="endereço" class="labelInput">Endereço</label>
+                </div>
+                <p>Sexo:</p>
+                    <input type="radio" id="feminino" name="genero" value="feminino" required>
+                    <label for="feminino">Feminino</label>
+                    <input type="radio" id="masculino" name="genero" value="masculino" required>
+                    <label for="masculino">Masculino</label>
+                    <input type="radio" id="outro" name="genero" value="outro" required>
+                    <label for="outro">Outro</label>
+                    <br><br>
+                    <div class="inputBox">
+                        <label for="data_nascimento"><p>Data de Nascimento</p></label>
+                        <input type="date" name="data_nascimento" id="data_nascimento" required>
+                    </div>
+                    <br><br><br>
+                    <p>Formação Acadêmica:</p>
+                    <select id="escolaridade" required>
+                        <option value="">Selecione...</option>
+                        <option>Ensino Fundamental</option>
+                        <option>Ensino Médio</option>
+                        <option>Cursando</option>
+                        <option>Ensino Superior</option>
+                        <option>Pós-graduação</option>
+                        <option>Mestrado</option>
+                        <option>Doutorado</option>
+                      </select>
+                      <br><br><br>
+                    <div class="inputBox">
+                        <input type="text" name="area-de-estudo" id="area-de-estudo" class="inputUser" required>
+                        <label for="area-de-estudo" class="labelInput">Área de estudo</label>
+                    </div>
+                    <br><br>
+                    <div class="inputBox">
+                        <input type="text" name="instituicao-de-ensino" id="instituicao-de-ensino" class="inputUser" required>
+                        <label for="instituicao-de-ensino" class="labelInput">Instituição de ensino</label>
+                    </div>
+                    <br><br>
+                    <div class="inputBox">
+                        <input type="text" name="ano-de-conclusao" id="ano-de-conclusao" class="inputUser" required>
+                        <label for="ano-de-conclusao" class="labelInput">Ano de conclusão</label>
+                    </div>
+                    <br><br>
+                    <p>Experiência Profissional:</p>
+                    <br>
+                    <div class="inputBox">
+                        <input type="text" name="nome-da-empresa" id="nome-da-empresa" class="inputUser" required>
+                        <label for="nome-da-empresa" class="labelInput">Nome da empresa</label>
+                    </div>
+                    <br><br>
+                    <div class="inputBox">
+                        <input type="text" name="cargo" id="cargo" class="inputUser" required>
+                        <label for="cargo" class="labelInput">Cargo</label>
+                    </div>
+                    <br><br>
+                    <div class="inputBox">
+                        <input type="text" name="periodo-de-trabalho" id="periodo-de-trabalho" class="inputUser" required>
+                        <label for="periodo-de-trabalho" class="labelInput">Período de trabalho</label>
+                    </div>
+                    <br><br>
+                    <div class="inputBox">
+                        <input type="text" name="descricao-das-reponsabilidades/conquistas" id="descricao-das-reponsabilidades/conquistas" class="inputUser" required>
+                        <label for="descricao-das-reponsabilidades/conquistas" class="labelInput">Descrição das responsabilidades e conquistas</label>
+                    </div>
+                    <br><br>
+                    <p>Habilidades e Competências:</p>
+                    <br>
+                    <div class="inputBox">
+                        <input type="text" name="habilidades-tecnicas" id="habilidades-tecnicas" class="inputUser" required>
+                        <label for="habilidades-tecnicas" class="labelInput">Habilidades técnicas</label>
+                    </div>
+                    <br><br>
+                    <div class="inputBox">
+                        <input type="text" name="idiomas" id="idiomas" class="inputUser" required>
+                        <label for="idiomas" class="labelInput">Idiomas</label>
+                    </div>
+                    <br><br>
+                    <div class="inputBox">
+                        <input type="text" name="certificacoes-e-treinamentos" id="certificacoes-e-treinamentos" class="inputUser" required>
+                        <label for="certificacoes-e-treinamentos" class="labelInput">Certificações e treinamentos</label>
+                    </div>
+                    <br><br>
+                    <p>Objetivos e Interesses:</p>
+                    <br>
+                    <div class="inputBox">
+                        <input type="text" name="objetivos-profissionais" id="objetivos-profissionais" class="inputUser" required>
+                        <label for="objetivos-profissionais" class="labelInput">Objetivos profissionais</label>
+                    </div>
+                    <br><br>
+                    <div class="inputBox">
+                        <input type="text" name="area-de-interesse" id="area-de-interesse" class="inputUser" required>
+                        <label for="area-de-estudo" class="labelInput">Áreas de interesse</label>
+                    </div>
+                    <br><br>
+                    <div class="inputBox">
+                        <input type="text" name="projetos-ou-iniciativas" id="projetos-ou-iniciativas" class="inputUser" required>
+                        <label for="projetos-ou-iniciativas" class="labelInput">Projetos ou iniciativas que gostaria de desenvolver</label>
+                    </div>
+                    <br><br>
+                    <p>Anexo de Documentos:</p>
+                    <br>
+                    <input type="file" id="curriculo" name="curriculo" accept=".pdf">
+                    <label for="curriculo">Currículo/Outros</label>
+                    <br><br>
+                    <input type="file" id="certificados-diplomas" name="certificados-diplomas" accept=".pdf">
+                    <label for="certificados-diplomas">Certificados/diplomas</label>
+                    <br>
+                    <input type="submit" name="submit" id="submit" value="Enviar" onclick="validarFormulario(event)">
+                </fieldset>
+        </form>
+    </div>
+    <img src="imagens/banco.png" class="logo-fixa" alt="Banco de Talentos">
+    
+    <script>
+        document.querySelectorAll('input, select, textarea').forEach((element, index, elements) => {
+    element.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Impede o submit
+            let next = elements[index + 1];
+            while (next && next.disabled) {
+                next = elements[++index + 1];
+            }
+            if (next) {
+                next.focus();
+            }
+        }
+    });
+});
+
+      function validarFormulario(event) {
+    event.preventDefault();
+    document.querySelectorAll('.erro-msg').forEach(msg => msg.remove());
+
+    let formValido = true;
+    const campos = document.querySelectorAll('input[required]:not([type="radio"]), select[required], textarea[required]');
+
+    campos.forEach(campo => {
+        campo.classList.remove('campo-invalido');
+        const msgErro = document.createElement('div');
+        msgErro.className = 'erro-msg';
+        msgErro.style.color = 'red';
+        msgErro.style.fontSize = '10px';
+        msgErro.style.marginTop = '3px';
+
+        if (!campo.value.trim()) {
+            formValido = false;
+            campo.classList.add('campo-invalido');
+            msgErro.innerHTML = `Preencha este campo`;
+        } else {
+            // Validação por tipo específico
+            if (campo.id === 'email' && !/^\S+@\S+\.\S+$/.test(campo.value)) {
+                formValido = false;
+                campo.classList.add('campo-invalido');
+                msgErro.innerHTML = `Email inválido (Ex:seuemail@gmail.com)`;
+            }
+
+            if (campo.id === 'telefone' && !/^\d{10}$/.test(campo.value)) {
+                formValido = false;
+                campo.classList.add('campo-invalido');
+                msgErro.innerHTML = `Telefone deve conter apenas números (Ex:1233333333)`;
+            }
+
+            if (campo.id === 'ano-de-conclusao' && !/^\d{4}$/.test(campo.value)) {
+                formValido = false;
+                campo.classList.add('campo-invalido');
+                msgErro.innerHTML = `Ex:2025`;
+            }
+        }
+
+        if (!formValido && msgErro.innerHTML.length > 0) {
+            if (campo.parentElement.classList.contains('inputBox')) {
+                campo.parentElement.appendChild(msgErro);
+            } else {
+                campo.insertAdjacentElement('afterend', msgErro);
+            }
+        }
+    });
+
+    if (formValido) {
+        window.location.href = 'principal.html';
+    }
+}
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        }
+    </script>
+</body>
+</html>

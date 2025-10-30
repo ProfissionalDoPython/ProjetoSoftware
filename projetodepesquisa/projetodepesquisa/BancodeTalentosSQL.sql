@@ -1,0 +1,1 @@
+INSERT INTO mybank.contas(Senha, Email, CPF) VALUES (7213456, 'gustavoredes@gmail.com', '567453234')

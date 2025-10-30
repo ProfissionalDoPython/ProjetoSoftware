@@ -1,0 +1,232 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        :root {
+            --bg-body: antiquewhite;
+            --form-bg: #f0f0f0;
+            --form-text: black;
+            --logo-bg: #cce5ff;
+            --btn-bg: #003366;
+            --btn-hover: orange;
+            --border-color: #2e73b9;
+        }
+        [data-theme="dark"] {
+            --bg-body: #1e1e1e;
+            --form-bg: #2b2b2b;
+            --form-text: #eee;
+            --logo-bg: #3a3a3a;
+            --btn-bg: #4682b4;
+            --btn-hover: #ffa500;
+            --border-color: #555;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg-body) url('imagens/fundo.png') no-repeat center 140% fixed;
+            background-size: contain;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        .container {
+            margin-top: 50px;
+            background: white;
+            width: 750px;
+            height: 350px;
+            display: flex;
+            align-items: stretch;
+            border: 4px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .separador {
+            width: 4px;
+            background-color: var(--border-color);
+        }
+        .logo {
+            width: 220px;
+            text-align: center;
+            background-color: var(--logo-bg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .logo img {
+            width: 90%;
+        }
+        .logo p {
+            color: #497db2;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .form {
+            flex: 1;
+            text-align: left;
+            background-color: var(--form-bg);
+            color: var(--form-text);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .form h3 {
+            text-align: center;
+        }
+        .form input {
+            width: 80%;
+            padding: 4px;
+            margin: 10px 0 2px 64px;
+            border: 1px solid black;
+        }
+
+        .form label {
+            margin-left: auto;
+            margin-right: 350px;
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+        }
+        .form a {
+            display: inline-block;
+            font-size: 12px;
+            color: #497db2;
+            text-decoration: underline;
+        }
+        .form .links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .form button {
+            background-color: var(--btn-bg);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px auto;
+            display: block;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .form button:hover {
+            background-color: var(--btn-hover);
+        }
+        .header {
+            position: absolute;
+            top: 30px;
+            text-align: center;
+            width: 100%;
+        }
+        .header img {
+            width: 550px;
+            display: block;
+            margin: 0 auto;
+        }
+        .header p {
+            color: rgb(82, 137, 156);
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            font-size: 18px;
+            margin-left: 220px;
+            margin-top: -24px;
+            font-weight: bold;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000; 
+            background-color: transparent;
+            transform: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-left: 64px;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <div class="header">
+        <img src="imagens/banco.png" alt="Banco de Talentos">
+        <p>UNIVERSIDADE ESTADUAL DE GOIÁS</p>
+    </div>
+    <div class="container">
+        <div class="logo">
+            <img src="imagens/logoueg.png" alt="Universidade Estadual de Goiás">
+            <p>Demontre o Seu Valor!</p>
+        </div>
+        <div class="separador"></div>
+        <div class="form">
+            <h3>Por favor faça o login para acessar a sua conta</h3>
+            <label>Senha:</label>
+            <input type="password" id="senha" placeholder="Digite sua senha">
+            <div class="error" id="senhaErro"></div>
+            <label>E-mail:</label>
+            <input type="email" id="email" placeholder="Digite seu e-mail">
+            <div class="error" id="emailErro"></div>
+            <label>CPF:</label>
+            <input type="text" id="cpf" placeholder="Digite seu CPF">
+            <div class="error" id="cpfErro"></div>
+            <button type="button" onclick="validarLogin()">Entrar</button>
+            <div class="links">
+                <a href="novasenha.html">Não possui uma conta?</a>
+                <a href="recuperar_senha.html">Esqueceu a senha?</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      function toggleTheme() {
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      }
+
+      function validarLogin() {
+        const email = document.getElementById('email');
+        const senha = document.getElementById('senha');
+        const cpf = document.getElementById('cpf');
+
+        const emailErro = document.getElementById('emailErro');
+        const senhaErro = document.getElementById('senhaErro');
+        const cpfErro = document.getElementById('cpfErro');
+
+        let valido = true;
+        emailErro.textContent = '';
+        senhaErro.textContent = '';
+        cpfErro.textContent = '';
+
+        if (!email.value.includes('@')) {
+          emailErro.textContent = 'Email inválido';
+          valido = false;
+        }
+        if (senha.value.length < 4) {
+          senhaErro.textContent = 'Senha muito curta';
+          valido = false;
+        }
+        if (cpf.value.length !== 11) {
+          cpfErro.textContent = 'CPF inválido (11 dígitos)';
+          valido = false;
+        }
+
+        if (valido) {
+          window.location.href = 'formulario.html';
+        }
+      }
+    </script>
+</body>
+</html>
