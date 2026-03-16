@@ -1,0 +1,67 @@
+[
+  {
+    "id": "ev001",
+    "titulo": "Seminário de Inovação e Tecnologia",
+    "data": "20 de junho de 2025",
+    "local": "Curitiba - PR",
+    "descricao": "Participe de palestras e workshops sobre inovação tecnológica e startups com foco em desenvolvimento web e inteligência artificial.",
+    "linkInscricao": "/inscricao?titulo=Seminário%20de%20Inovação",
+    "destaque": true,
+    "categoria": "Seminário",
+    "area": "Tecnologia",
+    "modalidade": "Presencial",
+    "mes": "junho"
+  },
+  {
+    "id": "ev002",
+    "titulo": "Semana Acadêmica de Computação",
+    "data": "5 a 9 de julho de 2025",
+    "local": "Online",
+    "descricao": "Apresentações, oficinas e maratonas de programação para alunos de graduação, com foco em Python e IA.",
+    "linkInscricao": "/inscricao?titulo=Semana%20Acadêmica%20de%20Computa%C3%A7%C3%A3o",
+    "destaque": false,
+    "categoria": "Semana Acadêmica",
+    "area": "Tecnologia",
+    "modalidade": "Online",
+    "mes": "julho"
+  },
+  {
+    "id": "ev003",
+    "titulo": "Fórum de Educação e Diversidade",
+    "data": "1º de agosto de 2025",
+    "local": "São Paulo - SP",
+    "descricao": "Discussões sobre práticas pedagógicas inclusivas no ensino superior e o papel da educação na promoção da diversidade.",
+    "linkInscricao": "/inscricao?titulo=Fórum%20de%20Educação%20e%20Diversidade",
+    "destaque": false,
+    "categoria": "Fórum",
+    "area": "Educação",
+    "modalidade": "Presencial",
+    "mes": "agosto"
+  },
+  {
+    "id": "ev004",
+    "titulo": "Conferência de Tecnologia e Inovação",
+    "data": "15 de setembro de 2025",
+    "local": "Rio de Janeiro - RJ",
+    "descricao": "Discussões sobre as últimas tendências em tecnologia e inovação, com painéis sobre IA, Big Data e Segurança Cibernética.",
+    "linkInscricao": "/inscricao?titulo=Conferência%20de%20Tecnologia%20e%20Inovação",
+    "destaque": true,
+    "categoria": "Conferência",
+    "area": "Tecnologia",
+    "modalidade": "Hibrido",
+    "mes": "setembro"
+  },
+  {
+    "id": "ev005",
+    "titulo": "Workshop de Metodologias Ativas no Ensino",
+    "data": "10 de julho de 2025",
+    "local": "Online",
+    "descricao": "Descubra e aplique novas metodologias para tornar o ensino mais dinâmico e engajador. Ideal para educadores e futuros professores.",
+    "linkInscricao": "/inscricao?titulo=Workshop%20Metodologias%20Ativas",
+    "destaque": false,
+    "categoria": "Workshop",
+    "area": "Educação",
+    "modalidade": "Online",
+    "mes": "julho"
+  }
+]

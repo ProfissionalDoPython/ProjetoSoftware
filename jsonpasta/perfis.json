@@ -1,0 +1,162 @@
+[
+  {
+    "cpf": "12345678900",
+    "nome": "Anderson Cavalcante",
+    "profissao": "Administrador de Sistemas",
+    "formacaoAcademica": [
+      "Doutorado em Ciências da Computação",
+      "Pós-Graduação em Segurança da Informação"
+    ],
+    "experienciaProfissional": [
+      "Gerente de TI - Empresa XYZ (5 anos)",
+      "Coordenador de Projetos - Startup ABC (3 anos)"
+    ],
+    "habilidades": {
+      "Gestão de Projetos": 95,
+      "Segurança da Informação": 90,
+      "Liderança": 85
+    },
+    "areasInteresse": [
+      "Gestão de Projetos",
+      "Segurança Cibernética",
+      "Transformação Digital"
+    ],
+    "objetivosProfissionais": "Liderar a equipe de TI da UEG e implementar soluções inovadoras para a comunidade acadêmica.",
+    "experienciaAcademica": "Professor Convidado em cursos de pós-graduação.",
+    "idiomas": [
+      "Português - Nativo",
+      "Inglês - Fluente",
+      "Espanhol - Básico"
+    ],
+    "participacoes": [
+      "Conferência Nacional de Segurança de Dados",
+      "Workshop de Liderança e Gestão de Equipes"
+    ],
+    "projetosDestacados": [
+      "Implementação de Sistema de Gestão Acadêmica (UEG)",
+      "Desenvolvimento de Política de Segurança de Dados (Empresa XYZ)"
+    ],
+    "linkedin": "https://linkedin.com/in/administrador",
+    "github": "",
+    "portfolio": ""
+  },
+  {
+    "cpf": "98765432100",
+    "nome": "Gustavo Henrique Ferreira  Rodrigues",
+    "profissao": "Estudante de Sistemas para Internet",
+    "formacaoAcademica": [
+      "Sistemas para Internet"
+    ],
+    "experienciaProfissional": [
+      "Novo"
+    ],
+    "habilidades": {
+      "Javascript": 50,
+      "Java": 20
+    },
+    "areasInteresse": [],
+    "objetivosProfissionais": "Carregando objetivos...",
+    "experienciaAcademica": "Carregando experiência acadêmica...",
+    "idiomas": [],
+    "participacoes": [],
+    "projetosDestacados": [],
+    "linkedin": "Carregando LinkedIn...",
+    "github": "Carregando GitHub...",
+    "portfolio": "Carregando Portfólio..."
+  },
+  {
+    "cpf": "11223344550",
+    "nome": "Dr. Ana Paula Silveira",
+    "profissao": "Professor Associado",
+    "formacaoAcademica": [
+      "Doutorado em Ciência da Computação - Universidade de São Paulo (USP)",
+      "Mestrado em Engenharia de Software - Universidade Estadual de Campinas (UNICAMP)",
+      "Bacharelado em Sistemas de Informação - Universidade Federal de Goiás (UFG)"
+    ],
+    "experienciaProfissional": [
+      "Professor Associado - Universidade Estadual de Goiás (UEG) (10 anos)",
+      "Pesquisador Sênior - Instituto de Tecnologia Avançada (5 anos)",
+      "Desenvolvedor de Software - Empresa TechSolutions (3 anos)"
+    ],
+    "habilidades": {
+      "Inteligência Artificial": 90,
+      "Machine Learning": 85,
+      "Ensino e Mentoria": 95,
+      "Pesquisa Científica": 90,
+      "Java": 80
+    },
+    "areasInteresse": [
+      "Inteligência Artificial Aplicada",
+      "Processamento de Linguagem Natural",
+      "Educação em Tecnologia",
+      "Sistemas Distribuídos"
+    ],
+    "objetivosProfissionais": "Contribuir para o avanço da pesquisa em IA na UEG e formar novos talentos na área de tecnologia.",
+    "experienciaAcademica": "Orientação de mais de 20 projetos de iniciação científica e coautoria em diversos artigos publicados em conferências internacionais.",
+    "idiomas": [
+      "Português - Nativo",
+      "Inglês - Fluente",
+      "Francês - Básico"
+    ],
+    "participacoes": [
+      "Conferência Brasileira de Inteligência Artificial (CBIA) - Palestrante",
+      "Workshop de Metodologias de Ensino para o Século XXI",
+      "Membro do Comitê de Programa da SBC"
+    ],
+    "projetosDestacados": [
+      "Sistema de Recomendação de Conteúdo Educacional (UEG)",
+      "Modelo Preditivo para Análise de Sentimentos em Redes Sociais",
+      "Plataforma de Simulação de Redes Neurais"
+    ],
+    "linkedin": "https://linkedin.com/in/anapaulasilveira",
+    "github": "https://github.com/anapaulasilveira",
+    "portfolio": "https://anapaulasilveira.dev/"
+  },
+  {
+    "cpf": "22334455660",
+    "nome": "Carlos Mendes",
+    "profissao": "Recrutador de Talentos Tech",
+    "formacaoAcademica": [
+      "Bacharelado em Recursos Humanos - Universidade de Brasília (UnB)",
+      "MBA em Gestão de Pessoas - Fundação Getúlio Vargas (FGV)"
+    ],
+    "experienciaProfissional": [
+      "Especialista em Aquisição de Talentos - TechCorp S.A. (7 anos)",
+      "Consultor de RH - RH Solutions (4 anos)",
+      "Recrutador Júnior - Startup Innova (2 anos)"
+    ],
+    "habilidades": {
+      "Recrutamento e Seleção": 95,
+      "Entrevista por Competências": 90,
+      "Employer Branding": 80,
+      "Hunting de Talentos": 85,
+      "Negociação": 88,
+      "Administração": 100
+    },
+    "areasInteresse": [
+      "Inteligência Artificial em RH",
+      "Engenharia de Software",
+      "Análise de Dados",
+      "Cibersegurança"
+    ],
+    "objetivosProfissionais": "Identificar e atrair os melhores talentos para a TechCorp, otimizando o processo de recrutamento e contribuindo para o crescimento da equipe de tecnologia.",
+    "experienciaAcademica": "Participação em seminários e workshops sobre tendências de mercado de trabalho e recrutamento ágil.",
+    "idiomas": [
+      "Português - Nativo",
+      "Inglês - Avançado"
+    ],
+    "participacoes": [
+      "HR Tech Summit Brasil",
+      "Conferência Nacional de Recrutamento e Seleção",
+      "Feira de Carreiras Universitárias"
+    ],
+    "projetosDestacados": [
+      "Implementação de ATS (Applicant Tracking System) na TechCorp",
+      "Criação de Programa de Estágio e Trainee",
+      "Desenvolvimento de Estratégias de Atração de Talentos"
+    ],
+    "linkedin": "https://linkedin.com/in/carlosmendesrecruiter",
+    "github": "http://localhost:8080/perfil#",
+    "portfolio": "http://localhost:8080/perfil#"
+  }
+]

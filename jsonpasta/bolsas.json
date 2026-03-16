@@ -1,0 +1,72 @@
+[
+  {
+    "id": "b001",
+    "titulo": "Bolsa de Iniciação Científica - CNPq/UEG",
+    "valor": "R$ 700/mês",
+    "duracaoMeses": "12 meses",
+    "publicoAlvo": "Alunos de graduação",
+    "descricao": "Bolsa para estudantes com projetos de pesquisa aprovados na área de Ciência e Tecnologia, sob orientação de professor.",
+    "requisitos": "CRG > 7.0, Disponibilidade de 20h/semana",
+    "beneficios": "Supervisão de professor, Relatório final obrigatório",
+    "area": "Pesquisa",
+    "modalidade": "Presencial",
+    "mesInicio": "agosto",
+    "linkInscricao": "/inscricao?titulo=Bolsa%20de%20Inicia%C3%A7%C3%A3o%20Cient%C3%ADfica%20-%20CNPq%2FUEG"
+  },
+  {
+    "id": "b002",
+    "titulo": "Bolsa de Mestrado - CAPES/UEG",
+    "valor": "R$ 1.500/mês",
+    "duracaoMeses": "24 meses",
+    "publicoAlvo": "Alunos de mestrado",
+    "descricao": "Apoio financeiro para estudantes matriculados em programas de pós-graduação stricto sensu (Mestrado) reconhecidos pela CAPES na UEG.",
+    "requisitos": "Estar regularmente matriculado, Dedicação exclusiva ao curso",
+    "beneficios": "Orientação de professor qualificado, Apoio a publicações",
+    "area": "Educação",
+    "modalidade": "Hibrido",
+    "mesInicio": "julho",
+    "linkInscricao": "/inscricao?titulo=Bolsa%20de%20Mestrado%20-%20CAPES%2FUEG"
+  },
+  {
+    "id": "b003",
+    "titulo": "Bolsa de Doutorado - FAPEG",
+    "valor": "R$ 2.200/mês",
+    "duracaoMeses": "48 meses",
+    "publicoAlvo": "Alunos de doutorado",
+    "descricao": "Bolsa para estudantes de doutorado com foco em pesquisa de alto impacto nas áreas de Engenharia e Tecnologia no estado de Goiás.",
+    "requisitos": "Estar regularmente matriculado, Projeto de tese aprovado",
+    "beneficios": "Apoio à participação em eventos, Auxílio material",
+    "area": "Tecnologia",
+    "modalidade": "Presencial",
+    "mesInicio": "setembro",
+    "linkInscricao": "/inscricao?titulo=Bolsa%20de%20Doutorado%20-%20FAPEG"
+  },
+  {
+    "id": "b004",
+    "titulo": "Bolsa de Extensão Universitária - PROEC/UEG",
+    "valor": "R$ 400/mês",
+    "duracaoMeses": "10 meses",
+    "publicoAlvo": "Alunos de graduação",
+    "descricao": "Para estudantes que participarão de projetos de extensão universitária, levando conhecimento e ações à comunidade.",
+    "requisitos": "Estar regularmente matriculado, Disponibilidade para atividades práticas",
+    "beneficios": "Certificação de horas, Experiência comunitária",
+    "area": "Extensão",
+    "modalidade": "Hibrido",
+    "mesInicio": "agosto",
+    "linkInscricao": "/inscricao?titulo=Bolsa%20de%20Extens%C3%A3o%20Universit%C3%A1ria%20-%20PROEC%2FUEG"
+  },
+  {
+    "id": "b005",
+    "titulo": "Bolsa Pós-Doutorado Sênior - Institutos Nacionais",
+    "valor": "R$ 4.500/mês",
+    "duracaoMeses": "12 meses",
+    "publicoAlvo": "Doutores com experiência",
+    "descricao": "Apoio a pesquisadores com título de doutor para desenvolverem projetos independentes em centros de pesquisa parceiros.",
+    "requisitos": "Doutorado concluído, Currículo Lattes atualizado",
+    "beneficios": "Financiamento de pesquisa, Oportunidade de colaboração internacional",
+    "area": "Pesquisa",
+    "modalidade": "Presencial",
+    "mesInicio": "outubro",
+    "linkInscricao": "/inscricao?titulo=Bolsa%20P%C3%B3s-Doutorado%20S%C3%AAnior%20-%20Institutos%20Nacionais"
+  }
+]

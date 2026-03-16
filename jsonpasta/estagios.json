@@ -1,0 +1,72 @@
+[
+  {
+    "id": "e001",
+    "titulo": "Estágio em Engenharia Civil - Construtora Futura",
+    "local": "Curitiba - PR",
+    "duracaoMeses": "6 meses",
+    "modalidade": "Presencial",
+    "descricao": "Atuação em projetos de infraestrutura, acompanhamento de obras e suporte técnico em campo.",
+    "bolsa": "R$ 1.500",
+    "cargaHoraria": "30h/semana",
+    "beneficios": "Vale-transporte, Vale-refeição, Seguro de Vida",
+    "area": "Engenharia",
+    "mesInicio": "junho",
+    "linkInscricao": "/inscricao?titulo=Estágio%20em%20Engenharia%20Civil%20-%20Construtora%20Futura"
+  },
+  {
+    "id": "e002",
+    "titulo": "Estágio em Marketing Digital - Agência Criativa+",
+    "local": "São Paulo - SP",
+    "duracaoMeses": "12 meses",
+    "modalidade": "Hibrido",
+    "descricao": "Criação de conteúdo para redes sociais, gestão de campanhas de e-mail marketing e análise de desempenho.",
+    "bolsa": "R$ 1.200",
+    "cargaHoraria": "25h/semana",
+    "beneficios": "Auxílio Home Office, Plano de Carreira",
+    "area": "Marketing",
+    "mesInicio": "julho",
+    "linkInscricao": "/inscricao?titulo=Estágio%20em%20Marketing%20Digital%20-%20Agência%20Criativa%2B"
+  },
+  {
+    "id": "e003",
+    "titulo": "Estágio em Desenvolvimento Web - TechSolutions",
+    "local": "Florianópolis - SC",
+    "duracaoMeses": "9 meses",
+    "modalidade": "Online",
+    "descricao": "Desenvolvimento front-end e back-end em projetos web, utilizando frameworks modernos e metodologias ágeis.",
+    "bolsa": "R$ 1.800",
+    "cargaHoraria": "30h/semana",
+    "beneficios": "Plataformas de cursos online, Mentoria técnica",
+    "area": "Tecnologia",
+    "mesInicio": "agosto",
+    "linkInscricao": "/inscricao?titulo=Estágio%20em%20Desenvolvimento%20Web%20-%20TechSolutions"
+  },
+  {
+    "id": "e004",
+    "titulo": "Estágio em Design Gráfico - Estúdio PixelArt",
+    "local": "Rio de Janeiro - RJ",
+    "duracaoMeses": "6 meses",
+    "modalidade": "Presencial",
+    "descricao": "Criação de peças gráficas para campanhas publicitárias, identidade visual e materiais impressos.",
+    "bolsa": "R$ 1.000",
+    "cargaHoraria": "20h/semana",
+    "beneficios": "Vale-transporte, Convênios com cursos de arte",
+    "area": "Design",
+    "mesInicio": "setembro",
+    "linkInscricao": "/inscricao?titulo=Estágio%20em%20Design%20Gráfico%20-%20Estúdio%20PixelArt"
+  },
+  {
+    "id": "e005",
+    "titulo": "Estágio em Análise de Dados - DataInsights",
+    "local": "Belo Horizonte - MG",
+    "duracaoMeses": "12 meses",
+    "modalidade": "Hibrido",
+    "descricao": "Coleta, tratamento e análise de grandes volumes de dados para gerar insights de negócios. Conhecimento em Python/R desejável.",
+    "bolsa": "R$ 1.700",
+    "cargaHoraria": "30h/semana",
+    "beneficios": "Auxílio certificações, Ambiente de trabalho flexível",
+    "area": "Tecnologia",
+    "mesInicio": "julho",
+    "linkInscricao": "/inscricao?titulo=Estágio%20em%20Análise%20de%20Dados%20-%20DataInsights"
+  }
+]
