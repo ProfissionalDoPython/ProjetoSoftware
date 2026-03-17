@@ -3,10 +3,11 @@
 </div>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java"/>
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
   <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML"/>
   <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white" alt="Thymeleaf"/>
+  <img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON"/>
 </p>
 
 ## 📜 Visão Geral
@@ -31,8 +32,6 @@ C:\Codigo\projetodepesquisa\demo\src\main\java\com\bancodetalentos\demo\
 C:\Codigo\projetodepesquisa\demo\src\main\resources\static\
 ```
 
----
-
 ## ⚙️ Como Funciona? (O Fluxo Principal)
 
 1.  O usuário acessa a aplicação e é direcionado para a **página de login**.
@@ -49,13 +48,13 @@ C:\Codigo\projetodepesquisa\demo\src\main\resources\static\
 
 ## 🧩 Componentes Principais
 
-| Componente              | Emoji | Descrição                                                                                                                                                                     |
-| ----------------------- | :---: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`BancoController.java`** |  🎼   | **O Maestro**: Ponto de entrada para as requisições do usuário. Orquestra as ações, chama os serviços e decide qual página (View) será exibida.                                  |
+| Componente | Emoji | Descrição |
+| :--- | :---: | :--- |
+| **`BancoController.java`** |  🎼   | **O Maestro**: Ponto de entrada para as requisições do usuário. Orquestra as ações, chama os serviços e decide qual página (View) será exibida. |
 | **`ContasService.java`** |  🧠   | **O Cérebro**: Contém a lógica de negócio "pesada". Sua principal responsabilidade é validar as credenciais do usuário lendo e comparando os dados do arquivo `usuario.json`. |
-| **`Contas.java`** |  🧱   | **O Modelo de Dados**: Uma classe POJO (Plain Old Java Object) que representa a estrutura de uma conta de usuário (`email`, `senha`, `cpf`, `tipoPerfil`).                     |
-| **`login.html`** |  🚪   | **A Porta de Entrada**: A página visual que o usuário vê primeiro, construída com HTML e Thymeleaf para interagir com o backend.                                              |
-| **`principal.html`** |  🏠   | **A Página Principal**: A página que o usuário acessa após um login bem-sucedido.                                                                                               |
+| **`Contas.java`** |  🧱   | **O Modelo de Dados**: Uma classe POJO (Plain Old Java Object) que representa a estrutura de uma conta de usuário (`email`, `senha`, `cpf`, `tipoPerfil`). |
+| **`login.html`** |  🚪   | **A Porta de Entrada**: A página visual que o usuário vê primeiro, construída com HTML e Thymeleaf para interagir com o backend. |
+| **`principal.html`** |  🏠   | **A Página Principal**: A página que o usuário acessa após um login bem-sucedido. |
 
 ---
 
