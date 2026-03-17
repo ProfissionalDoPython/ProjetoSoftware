@@ -1,9 +1,14 @@
 package com.bancodetalentos.demo.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import com.bancodetalentos.demo.config.CryptoConverter;
+import jakarta.persistence.Convert;
 
 /**
  * Classe de modelo que representa o perfil detalhado de um usuário.
@@ -17,13 +22,19 @@ public class Perfis {
      * O CPF é a Chave Primária (@Id) e o elo de ligação
      * com a tabela 'students' (a tabela de Contas).
      */
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Convert(converter = CryptoConverter.class)
     @Column(name = "cpf", unique = true, nullable = false)
     private String cpf;
 
     @Column(name = "nome_completo", nullable = false)
     private String nome;
 
+    @Convert(converter = CryptoConverter.class)
     @Column(name = "telefone")
     private String telefone;
 
@@ -102,5 +113,13 @@ public class Perfis {
 
     public void setTipoConta(String tipoConta) {
         this.tipoConta = tipoConta;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

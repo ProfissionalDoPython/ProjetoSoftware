@@ -3,7 +3,12 @@ package com.bancodetalentos.demo.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import com.bancodetalentos.demo.config.CryptoConverter;
+
+import jakarta.persistence.Convert;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -20,6 +25,7 @@ public class Contas {
     @Column(name = "id") // Assumes your column is named 'id'
     private Long id;
 
+    @Convert(converter = CryptoConverter.class)
     @Column(name = "cpf", unique = true) // Assumes column is 'cpf', marking as unique
     private String cpf;
 
